@@ -26,21 +26,54 @@ public class menuInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonReceitas = new javax.swing.JButton();
+        jButtonDespesas = new javax.swing.JButton();
+        jButtonContas = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButtonReceitas.setText("Receitas");
+        jButtonReceitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReceitasActionPerformed(evt);
+            }
+        });
+
+        jButtonDespesas.setText("Despesas");
+
+        jButtonContas.setText("Contas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButtonDespesas)
+                        .addComponent(jButtonContas, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jButtonReceitas))
+                .addContainerGap(601, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonReceitas)
+                .addGap(87, 87, 87)
+                .addComponent(jButtonDespesas)
+                .addGap(81, 81, 81)
+                .addComponent(jButtonContas)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReceitasActionPerformed
+
+    }//GEN-LAST:event_jButtonReceitasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +111,8 @@ public class menuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonContas;
+    private javax.swing.JButton jButtonDespesas;
+    private javax.swing.JButton jButtonReceitas;
     // End of variables declaration//GEN-END:variables
 }
