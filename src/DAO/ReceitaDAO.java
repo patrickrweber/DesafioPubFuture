@@ -16,7 +16,8 @@ public class ReceitaDAO {
     ArrayList<ReceitaDTO> lista = new ArrayList<>();
 
     public void cadastrarReceita(ReceitaDTO objreceitadto) {
-        String comando = "insert into receitas (valor, dataRecebimento, dataRecebimentoEsperado, descricao, conta, tipoReceita) values (?, ?, ?, ?, ?, ?)";
+        String comando = "insert into receitas (valor, dataRecebimento, dataRecebimentoEsperado,"+
+                         " descricao, conta, tipoReceita) values (?, ?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -59,6 +60,28 @@ public class ReceitaDAO {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Pesquisar" + erro);
         }
         return lista;
+    }
+    
+    public void alterarReceita(ReceitaDTO objreceitadto){
+        String comando = "update receitas set valor = ?, dataRecebimento = ?, dataRecebimentoEsperado = ?," +
+                         " descricao = ?, conta = ?, tipoReceita = ? where idReceita = ?";
+        conexao = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conexao.prepareStatement(comando);
+            pstm.setFloat(1, objreceitadto.getValor_receita());
+            pstm.setString(2, objreceitadto.getDataRecebimento_receita());
+            pstm.setString(3, objreceitadto.getDataRecebimentoEsperado_receita());
+            pstm.setString(4, objreceitadto.getDescricao_receita());
+            pstm.setInt(5, objreceitadto.getConta_receita());
+            pstm.setString(6, objreceitadto.getTipo_receita());
+            pstm.setInt(7, objreceitadto.getId_receita());
+
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ReceitaDAO Alterar" + erro);
+        }
     }
 
 }
