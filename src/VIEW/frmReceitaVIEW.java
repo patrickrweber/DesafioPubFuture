@@ -6,6 +6,10 @@ package VIEW;
 
 import DAO.ReceitaDAO;
 import DTO.ReceitaDTO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +22,7 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
      */
     public frmReceitaVIEW() {
         initComponents();
+        listarReceitas();
     }
 
     /**
@@ -44,6 +49,12 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         jList1tipoReceita = new javax.swing.JList<>();
         jButtonCadastrarReceita = new javax.swing.JButton();
         jButtonVoltarReceita = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableReceita = new javax.swing.JTable();
+        jLabelIdReceira = new javax.swing.JLabel();
+        jTextFieldIdReceita = new javax.swing.JTextField();
+        jButtonCarregarCampos = new javax.swing.JButton();
+        jButtonLimparCampos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,7 +83,7 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         });
 
         jList1tipoReceita.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Salário", "Presente", "Prêmio", "Outros"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -87,56 +98,104 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
 
         jButtonVoltarReceita.setText("Voltar");
 
+        jTableReceita.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Valor", "Data Recebimento", "Data Recebimento Esperado", "Descrição", "Conta", "Tipo Receita"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableReceita);
+
+        jLabelIdReceira.setText("Código");
+
+        jTextFieldIdReceita.setEnabled(false);
+
+        jButtonCarregarCampos.setText("Carregar Campos");
+        jButtonCarregarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCarregarCamposActionPerformed(evt);
+            }
+        });
+
+        jButtonLimparCampos.setText("Limpar Campos");
+        jButtonLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparCamposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelDataRecebimentoReceita)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabelValorReceita)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                                .addComponent(jTextFieldValorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(71, 71, 71))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelContaReceita)
-                                        .addComponent(jLabelTipoReceita)
-                                        .addComponent(jLabelDescricaoReceita))
-                                    .addGap(96, 96, 96)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldDescricaoReceita)
-                                        .addComponent(jTextFieldContaReceita)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))
-                                .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonCadastrarReceita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonVoltarReceita)
+                        .addGap(133, 133, 133))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelContaReceita)
+                                .addComponent(jLabelTipoReceita)
+                                .addComponent(jLabelDescricaoReceita))
+                            .addGap(96, 96, 96)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldDescricaoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldContaReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelDataRecebimentoEsperado)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextFieldDataRecebimentoReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldDataRecebimentoEsperadoReceita))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonCadastrarReceita)
+                                    .addComponent(jLabelDataRecebimentoReceita)
+                                    .addComponent(jLabelValorReceita)
+                                    .addComponent(jLabelIdReceira))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonVoltarReceita)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldDataRecebimentoReceita, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldDataRecebimentoEsperadoReceita, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldValorReceita)
+                                    .addComponent(jTextFieldIdReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 100, Short.MAX_VALUE)
+                        .addComponent(jButtonLimparCampos)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCarregarCampos)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCarregarCampos)
+                    .addComponent(jButtonVoltarReceita)
+                    .addComponent(jButtonCadastrarReceita)
+                    .addComponent(jButtonLimparCampos))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelIdReceira)
+                    .addComponent(jTextFieldIdReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelValorReceita)
                     .addComponent(jTextFieldValorReceita))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDataRecebimentoReceita)
                     .addComponent(jTextFieldDataRecebimentoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,17 +208,17 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
                     .addComponent(jLabelDescricaoReceita)
                     .addComponent(jTextFieldDescricaoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContaReceita)
                     .addComponent(jTextFieldContaReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTipoReceita)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrarReceita)
-                    .addComponent(jButtonVoltarReceita)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabelTipoReceita))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(543, 543, 543))
         );
 
         pack();
@@ -170,33 +229,22 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldContaReceitaActionPerformed
 
     private void jTextFieldValorReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorReceitaActionPerformed
-      
+
     }//GEN-LAST:event_jTextFieldValorReceitaActionPerformed
 
     private void jButtonCadastrarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarReceitaActionPerformed
-        String  dataRecebimentoReceita, dataRecebimentoEsperadoReceita, descricaoReceita, tipoReceita;
-        Float valorReceita;
-        int contaReceita;
-        
-        dataRecebimentoReceita = jTextFieldDataRecebimentoReceita.getText();
-        dataRecebimentoEsperadoReceita = jTextFieldDataRecebimentoEsperadoReceita.getText();
-        descricaoReceita = jTextFieldDescricaoReceita.getText();
-        tipoReceita = jList1tipoReceita.getSelectedValue();
-        valorReceita  = Float.parseFloat(jTextFieldValorReceita.getText());
-        contaReceita = Integer.parseInt(jTextFieldContaReceita.getText());
-        
-        ReceitaDTO objreceitadto = new  ReceitaDTO();
-        
-        objreceitadto.setConta_receita(contaReceita);
-        objreceitadto.setValor_receita(valorReceita);
-        objreceitadto.setDataRecebimento_receita(dataRecebimentoReceita);
-        objreceitadto.setDataRecebimentoEsperado_receita(dataRecebimentoEsperadoReceita);
-        objreceitadto.setDescricao_receita(descricaoReceita);
-        objreceitadto.setTipo_receita(tipoReceita);
-        
-        ReceitaDAO objreceitadao = new ReceitaDAO();
-        objreceitadao.cadastrarReceita(objreceitadto);
+       cadastrarReceita();
+       listarReceitas();
+       limparCampos();
     }//GEN-LAST:event_jButtonCadastrarReceitaActionPerformed
+
+    private void jButtonCarregarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarregarCamposActionPerformed
+        carregarCampos();
+    }//GEN-LAST:event_jButtonCarregarCamposActionPerformed
+
+    private void jButtonLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparCamposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,19 +283,96 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrarReceita;
+    private javax.swing.JButton jButtonCarregarCampos;
+    private javax.swing.JButton jButtonLimparCampos;
     private javax.swing.JButton jButtonVoltarReceita;
     private javax.swing.JLabel jLabelContaReceita;
     private javax.swing.JLabel jLabelDataRecebimentoEsperado;
     private javax.swing.JLabel jLabelDataRecebimentoReceita;
     private javax.swing.JLabel jLabelDescricaoReceita;
+    private javax.swing.JLabel jLabelIdReceira;
     private javax.swing.JLabel jLabelTipoReceita;
     private javax.swing.JLabel jLabelValorReceita;
     private javax.swing.JList<String> jList1tipoReceita;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableReceita;
     private javax.swing.JTextField jTextFieldContaReceita;
     private javax.swing.JTextField jTextFieldDataRecebimentoEsperadoReceita;
     private javax.swing.JTextField jTextFieldDataRecebimentoReceita;
     private javax.swing.JTextField jTextFieldDescricaoReceita;
+    private javax.swing.JTextField jTextFieldIdReceita;
     private javax.swing.JTextField jTextFieldValorReceita;
     // End of variables declaration//GEN-END:variables
+
+    private void listarReceitas() {
+        try {
+            ReceitaDAO objreceitadao = new ReceitaDAO();
+
+            DefaultTableModel model = (DefaultTableModel) jTableReceita.getModel();
+            model.setNumRows(0);
+
+            ArrayList<ReceitaDTO> lista = objreceitadao.PesquisarReceita();
+
+            for (int num = 0; num < lista.size(); num++) {
+                model.addRow(new Object[]{
+                    lista.get(num).getId_receita(),
+                    lista.get(num).getValor_receita(),
+                    lista.get(num).getDataRecebimento_receita(),
+                    lista.get(num).getDataRecebimentoEsperado_receita(),
+                    lista.get(num).getDescricao_receita(),
+                    lista.get(num).getConta_receita(),
+                    lista.get(num).getTipo_receita()
+                });
+            }
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Listar Receitas View" + erro);
+
+        }
+    }
+    private void carregarCampos(){
+        
+        int setar = jTableReceita.getSelectedRow();
+        jTextFieldIdReceita.setText(jTableReceita.getModel().getValueAt(setar, 0).toString());
+        jTextFieldValorReceita.setText(jTableReceita.getModel().getValueAt(setar, 1).toString());
+        jTextFieldDataRecebimentoReceita.setText(jTableReceita.getModel().getValueAt(setar, 2).toString());
+        jTextFieldDataRecebimentoEsperadoReceita.setText(jTableReceita.getModel().getValueAt(setar, 3).toString());
+        jTextFieldDescricaoReceita.setText(jTableReceita.getModel().getValueAt(setar, 4).toString());
+        jTextFieldContaReceita.setText(jTableReceita.getModel().getValueAt(setar, 5).toString());
+    }
+    private void cadastrarReceita(){
+    String dataRecebimentoReceita, dataRecebimentoEsperadoReceita, descricaoReceita, tipoReceita;
+        Float valorReceita;
+        int contaReceita;
+
+        dataRecebimentoReceita = jTextFieldDataRecebimentoReceita.getText();
+        dataRecebimentoEsperadoReceita = jTextFieldDataRecebimentoEsperadoReceita.getText();
+        descricaoReceita = jTextFieldDescricaoReceita.getText();
+        tipoReceita = jList1tipoReceita.getSelectedValue();
+        valorReceita = Float.parseFloat(jTextFieldValorReceita.getText());
+        contaReceita = Integer.parseInt(jTextFieldContaReceita.getText());
+
+        ReceitaDTO objreceitadto = new ReceitaDTO();
+
+        objreceitadto.setConta_receita(contaReceita);
+        objreceitadto.setValor_receita(valorReceita);
+        objreceitadto.setDataRecebimento_receita(dataRecebimentoReceita);
+        objreceitadto.setDataRecebimentoEsperado_receita(dataRecebimentoEsperadoReceita);
+        objreceitadto.setDescricao_receita(descricaoReceita);
+        objreceitadto.setTipo_receita(tipoReceita);
+
+        ReceitaDAO objreceitadao = new ReceitaDAO();
+        objreceitadao.cadastrarReceita(objreceitadto);
+    }
+    private void limparCampos(){
+        jTextFieldIdReceita.setText("");
+        jTextFieldValorReceita.setText("");
+        jTextFieldDataRecebimentoReceita.setText("");
+        jTextFieldDataRecebimentoEsperadoReceita.setText("");
+        jTextFieldDescricaoReceita.setText("");
+        jTextFieldContaReceita.setText("");
+        jTextFieldDescricaoReceita.requestFocus();
+   }
+
 }
