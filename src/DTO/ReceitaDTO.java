@@ -3,10 +3,10 @@ package DTO;
 public class ReceitaDTO {
     
     private String  dataRecebimento_receita, dataRecebimentoEsperado_receita, descricao_receita, tipo_receita;
-    private Float valor_receita;
+    private Float valor_receita;                //Define as propriedades da classe Receita
     private int conta_receita, id_receita;
 
-    public String getDataRecebimento_receita() {
+    public String getDataRecebimento_receita() {            //Encapsulamento das propriedades através dos métodos get e set
         return dataRecebimento_receita;
     }
     

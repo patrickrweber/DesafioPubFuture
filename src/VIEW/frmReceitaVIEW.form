@@ -148,9 +148,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldValorReceita">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldValorReceitaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDataRecebimentoReceita">
       <Properties>
@@ -184,9 +181,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldContaReceita">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldContaReceitaActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -274,6 +268,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluirActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

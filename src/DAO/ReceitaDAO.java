@@ -8,13 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ReceitaDAO {
-
+public class ReceitaDAO {       //Metódos do CRUD
     Connection conexao;
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<ReceitaDTO> lista = new ArrayList<>();
-
     public void cadastrarReceita(ReceitaDTO objreceitadto) {
         String comando = "insert into receitas (valor, dataRecebimento, dataRecebimentoEsperado,"+
                          " descricao, conta, tipoReceita) values (?, ?, ?, ?, ?, ?)";
@@ -34,8 +32,7 @@ public class ReceitaDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Cadastrar" + erro);
         }
-    }
-
+    } //Insere novas receitas
     public ArrayList<ReceitaDTO> PesquisarReceita() {
         String comando = "select * from receitas";
         conexao = new ConexaoDAO().conectaBD();
@@ -60,8 +57,7 @@ public class ReceitaDAO {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Pesquisar" + erro);
         }
         return lista;
-    }
-    
+    }       //Retorna a lista de todas receitas
     public void alterarReceita(ReceitaDTO objreceitadto){
         String comando = "update receitas set valor = ?, dataRecebimento = ?, dataRecebimentoEsperado = ?," +
                          " descricao = ?, conta = ?, tipoReceita = ? where idReceita = ?";
@@ -82,6 +78,19 @@ public class ReceitaDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Alterar" + erro);
         }
-    }
+    }   //Altera as receitas
+    public void excluirReceita(ReceitaDTO objreceitadto){
+        String comando = "delete from receitas where idReceita =?";
+        conexao = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conexao.prepareStatement(comando);
+            pstm.setInt(1, objreceitadto.getId_receita());
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ReceitaDAO Excluir" + erro);
+        }
+    }   //Exclui as receitas
 
 }
