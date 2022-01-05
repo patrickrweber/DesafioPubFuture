@@ -1,4 +1,5 @@
 package DAO;
+
 import DTO.DespesaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,14 +8,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DespesaDAO {       //Metódos do CRUD
+/**
+ * Classe de acesso à tabela Despesas do banco de dados
+ *
+ * @author Patrick Renan Weber
+ */
+public class DespesaDAO {
+
     Connection conexao;
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<DespesaDTO> lista = new ArrayList<>();
+
+    /**
+     * Método de inserção das despesas no banco de dados
+     *
+     * @param objdespesadto Objeto da classe DespesaDTO
+     */
     public void cadastrarDespesa(DespesaDTO objdespesadto) {
-        String comando = "insert into despesas (valor, dataPagamento, dataPagamentoEsperado,"+
-                         " tipoDespesa, conta) values (?, ?, ?, ?, ?)";
+        String comando = "insert into despesas (valor, dataPagamento, dataPagamentoEsperado,"
+                + " tipoDespesa, conta) values (?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -30,11 +43,17 @@ public class DespesaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "DespesaDAO Cadastrar" + erro);
         }
-    } //Insere novas receitas
+    }
+
+    /**
+     * Método que retorna uma lista da tabela Despesas do banco de dados
+     *
+     * @return lista
+     */
     public ArrayList<DespesaDTO> PesquisarDespesa() {
         String comando = "select * from despesas";
         conexao = new ConexaoDAO().conectaBD();
-        
+
         try {
             pstm = conexao.prepareStatement(comando);
             rs = pstm.executeQuery();
@@ -54,10 +73,17 @@ public class DespesaDAO {       //Metódos do CRUD
             JOptionPane.showMessageDialog(null, "DespesaDAO Pesquisar" + erro);
         }
         return lista;
-    }       //Retorna a lista de todas receitas
-    public void alterarDespesa(DespesaDTO objdespesadto){
-        String comando = "update despesas set valor = ?, dataPagamento = ?, dataPagamentoEsperado = ?," +
-                         " conta = ?, tipoDespesa = ? where idDespesa = ?";
+    }
+
+    /**
+     * Método que altera os registros da tabela Despesas através do Id
+     * especificado
+     *
+     * @param objdespesadto Objeto da classe ContaDTO
+     */
+    public void alterarDespesa(DespesaDTO objdespesadto) {
+        String comando = "update despesas set valor = ?, dataPagamento = ?, dataPagamentoEsperado = ?,"
+                + " conta = ?, tipoDespesa = ? where idDespesa = ?";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -73,8 +99,15 @@ public class DespesaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "DespesaDAO Alterar" + erro);
         }
-    }   //Altera as receitas
-    public void excluirDespesa(DespesaDTO objdespesadto){
+    }
+
+    /**
+     * Método que faz a exclusão de registros da tabela Despesas do banco de
+     * dados
+     *
+     * @param objdespesadto Objeto da classe DespesaDTO
+     */
+    public void excluirDespesa(DespesaDTO objdespesadto) {
         String comando = "delete from despesas where idDespesa =?";
         conexao = new ConexaoDAO().conectaBD();
 
@@ -86,6 +119,6 @@ public class DespesaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "DespesaDAO Excluir" + erro);
         }
-    }   //Exclui as receitas
+    }
 
 }

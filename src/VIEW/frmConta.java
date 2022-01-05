@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
 
 import DAO.ContaDAO;
@@ -11,8 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Formulário de interface para receber os valores da tabela contas
  *
- * @author patri
+ * @author Patrick Renan Weber
  */
 public class frmConta extends javax.swing.JFrame {
 
@@ -207,29 +204,49 @@ public class frmConta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Evento do botão Cadastrar
+     *
+     * @param evt
+     */
     private void jButtonCadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarContaActionPerformed
         cadastrarConta();
-        listarcontas();    //Evento do botão "Cadastrar", onde faz a inserção, atualiza a lista e limpa os campos
+        listarcontas();
         limparCamposConta();
     }//GEN-LAST:event_jButtonCadastrarContaActionPerformed
-
+    /**
+     * Evento do botão Carregar Campos
+     *
+     * @param evt
+     */
     private void jButtonCarregarCamposContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarregarCamposContaActionPerformed
-        carregarCamposConta();   //Evento do botão "Carregar Campos", onde seta os TextFields com os registros selecionados
+        carregarCamposConta();
     }//GEN-LAST:event_jButtonCarregarCamposContaActionPerformed
-
+    /**
+     * Evento do botão Limpar Campos
+     *
+     * @param evt
+     */
     private void jButtonLimparCamposContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposContaActionPerformed
-        limparCamposConta();    //Evento do botão "Limpar Campos", onde deixa em branco os TextFields
+        limparCamposConta();
     }//GEN-LAST:event_jButtonLimparCamposContaActionPerformed
-
+    /**
+     * Evento do botão Alterar
+     *
+     * @param evt
+     */
     private void jButtonAlterarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarContaActionPerformed
         alterarConta();
-        listarcontas(); //Evento do botão "Alterar", onde substitui os dados da tabela
+        listarcontas();
         limparCamposConta();
     }//GEN-LAST:event_jButtonAlterarContaActionPerformed
-
+    /**
+     * Evento do botão Excluir
+     *
+     * @param evt
+     */
     private void jButtonExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirContaActionPerformed
-        excluirConta();  //Evento do botão "Excluir", onde exclui os registros selecionados
+        excluirConta();
         listarcontas();
         limparCamposConta();
     }//GEN-LAST:event_jButtonExcluirContaActionPerformed
@@ -290,8 +307,12 @@ public class frmConta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSaldo;
     private javax.swing.JTextField jTextFieldSaldoTotal;
     // End of variables declaration//GEN-END:variables
-  private void listarcontas() {
-    float saldoTotal = 0; 
+
+    /**
+     * Método que atualiza a TableModel e faz a soma do saldo total
+     */
+    private void listarcontas() {
+        float saldoTotal = 0;
         try {
             ContaDAO objcontadao = new ContaDAO();
 
@@ -305,28 +326,34 @@ public class frmConta extends javax.swing.JFrame {
                     lista.get(num).getId_conta(),
                     lista.get(num).getSaldo_conta(),
                     lista.get(num).getTipo_conta(),
-                    lista.get(num).getInstituicao(),
-                });
-                    saldoTotal = saldoTotal + lista.get(num).getSaldo_conta();
+                    lista.get(num).getInstituicao(),});
+                saldoTotal = saldoTotal + lista.get(num).getSaldo_conta();
             }
-            jTextFieldSaldoTotal.setText(""+saldoTotal);
+            jTextFieldSaldoTotal.setText("" + saldoTotal);
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Listar Contas View" + erro);
 
         }
     }
-    private void carregarCamposConta(){
-        
+
+    /**
+     * Método que carrega os campos selecionados
+     */
+    private void carregarCamposConta() {
+
         int setar = jTableConta.getSelectedRow();
         jTextFieldIdConta.setText(jTableConta.getModel().getValueAt(setar, 0).toString());
         jTextFieldSaldo.setText(jTableConta.getModel().getValueAt(setar, 1).toString());
         jTextFieldInstituicao.setText(jTableConta.getModel().getValueAt(setar, 3).toString());
     }
-    private void cadastrarConta(){
+
+    /**
+     * Método que cadastra as informações inseridas
+     */
+    private void cadastrarConta() {
         String tipoConta, instituicao;
         Float saldo;
-
 
         tipoConta = jList1tipoConta.getSelectedValue();
         saldo = Float.parseFloat(jTextFieldSaldo.getText());
@@ -341,21 +368,29 @@ public class frmConta extends javax.swing.JFrame {
         ContaDAO objcontadao = new ContaDAO();
         objcontadao.cadastrarConta(objcontadto);
     }
-    private void limparCamposConta(){
+
+    /**
+     * Método que limpa os campos preenchidos
+     */
+    private void limparCamposConta() {
         jTextFieldIdConta.setText("");
         jTextFieldSaldo.setText("");
         jTextFieldInstituicao.setText("");
-   }
-    private void alterarConta(){
+    }
+
+    /**
+     * Método que altera as informações com os dados preenchidos
+     */
+    private void alterarConta() {
         String tipoConta, instituicao;
         Float saldo;
         int idConta;
-        
+
         idConta = Integer.parseInt(jTextFieldIdConta.getText());
         saldo = Float.parseFloat(jTextFieldSaldo.getText());
         instituicao = jTextFieldInstituicao.getText();
         tipoConta = jList1tipoConta.getSelectedValue();
-        
+
         ContaDTO objcontadto = new ContaDTO();
         objcontadto.setId_conta(idConta);
         objcontadto.setSaldo_conta(saldo);
@@ -363,18 +398,21 @@ public class frmConta extends javax.swing.JFrame {
         objcontadto.setInstituicao(instituicao);
         ContaDAO objcontadao = new ContaDAO();
         objcontadao.alterarConta(objcontadto);
-        
+
     }
-    private void excluirConta(){
+
+    /**
+     * Método que exclui os registros carregados
+     */
+    private void excluirConta() {
         int idConta;
-        
+
         idConta = Integer.parseInt(jTextFieldIdConta.getText());
-        
+
         ContaDTO objcontadto = new ContaDTO();
         objcontadto.setId_conta(idConta);
         ContaDAO objcontadao = new ContaDAO();
         objcontadao.excluirConta(objcontadto);
     }
-  
 
 }
