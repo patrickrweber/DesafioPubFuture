@@ -1,4 +1,3 @@
-
 package VIEW;
 
 import DAO.DespesaDAO;
@@ -7,6 +6,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Formulário de interface para receber os valores da tabela despesas
+ *
+ * @author Patrick Renan Weber
+ */
 public class frmDespesa extends javax.swing.JFrame {
 
     /**
@@ -32,7 +36,7 @@ public class frmDespesa extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableDespesas = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1tipoDespesa = new javax.swing.JList<>();
+        jList1tipoDespesa1 = new javax.swing.JList<>();
         jButtonCadastrarDespesa = new javax.swing.JButton();
         jLabelIdDespesa = new javax.swing.JLabel();
         jButtonVoltarDespesa = new javax.swing.JButton();
@@ -72,11 +76,12 @@ public class frmDespesa extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableDespesas);
 
-        jList1tipoDespesa.setModel(new javax.swing.AbstractListModel<String>() {
+        jList1tipoDespesa1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Alimentação", "Educação", "Lazer", "Moradia", "Roupa", "Saúde", "Transporte", "Outros"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jScrollPane1.setViewportView(jList1tipoDespesa1);
 
         jButtonCadastrarDespesa.setText("Cadastrar");
         jButtonCadastrarDespesa.addActionListener(new java.awt.event.ActionListener() {
@@ -224,40 +229,61 @@ public class frmDespesa extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVoltarDespesa)
-                    .addComponent(jButtonCadastrarDespesa)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonLimparCamposDespesa)
                         .addComponent(jButtonAlterarDespesa)
                         .addComponent(jButtonExcluirDespesa)
-                        .addComponent(jButtonCarregarCamposDespesa)))
+                        .addComponent(jButtonCarregarCamposDespesa))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonVoltarDespesa)
+                        .addComponent(jButtonCadastrarDespesa)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Evento do botão Cadastrar
+     *
+     * @param evt
+     */
     private void jButtonCadastrarDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarDespesaActionPerformed
         cadastrarDespesa();
         listarDespesas();    //Evento do botão "Cadastrar", onde faz a inserção, atualiza a lista e limpa os campos
         limparCamposDespesa();
     }//GEN-LAST:event_jButtonCadastrarDespesaActionPerformed
-
+    /**
+     * Evento do botão Carregar Campos
+     *
+     * @param evt
+     */
     private void jButtonCarregarCamposDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarregarCamposDespesaActionPerformed
         carregarCamposDespesa();   //Evento do botão "Carregar Campos", onde seta os TextFields com os registros selecionados
     }//GEN-LAST:event_jButtonCarregarCamposDespesaActionPerformed
-
+    /**
+     * Evento do botão Limpar Campos
+     *
+     * @param evt
+     */
     private void jButtonLimparCamposDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposDespesaActionPerformed
         limparCamposDespesa();    //Evento do botão "Limpar Campos", onde deixa em branco os TextFields
     }//GEN-LAST:event_jButtonLimparCamposDespesaActionPerformed
-
+    /**
+     * Evento do botão Alterar
+     *
+     * @param evt
+     */
     private void jButtonAlterarDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarDespesaActionPerformed
         alterarDespesa();
         listarDespesas(); //Evento do botão "Alterar", onde substitui os dados da tabela
         limparCamposDespesa();
     }//GEN-LAST:event_jButtonAlterarDespesaActionPerformed
-
+    /**
+     * Evento do botão Excluir
+     *
+     * @param evt
+     */
     private void jButtonExcluirDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirDespesaActionPerformed
         excluirDespesa();  //Evento do botão "Excluir", onde exclui os registros selecionados
         listarDespesas();
@@ -313,6 +339,7 @@ public class frmDespesa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipoDespesa;
     private javax.swing.JLabel jLabelValorDespesa;
     private javax.swing.JList<String> jList1tipoDespesa;
+    private javax.swing.JList<String> jList1tipoDespesa1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableDespesas;
@@ -322,7 +349,10 @@ public class frmDespesa extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIdDespesa;
     private javax.swing.JTextField jTextFieldValorDespesa;
     // End of variables declaration//GEN-END:variables
-private void listarDespesas() {
+    /**
+     * Método que atualiza a TableModel
+     */
+    private void listarDespesas() {
         try {
             DespesaDAO objdespesadao = new DespesaDAO();
 
@@ -347,8 +377,12 @@ private void listarDespesas() {
 
         }
     }
-    private void carregarCamposDespesa(){
-        
+
+    /**
+     * Método que carrega os campos selecionados
+     */
+    private void carregarCamposDespesa() {
+
         int setar = jTableDespesas.getSelectedRow();
         jTextFieldIdDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 0).toString());
         jTextFieldValorDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 1).toString());
@@ -356,7 +390,11 @@ private void listarDespesas() {
         jTextFieldDataPagamentoEsperadoDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 3).toString());
         jTextFieldContaDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 4).toString());
     }
-    private void cadastrarDespesa(){
+
+    /**
+     * Método que cadastra as informações inseridas
+     */
+    private void cadastrarDespesa() {
         String dataPagamentoDespesa, dataPagamentoEsperadoDespesa, tipoDespesa;
         Float valorDespesa;
         int contaDespesa;
@@ -378,15 +416,23 @@ private void listarDespesas() {
         DespesaDAO objdespesadao = new DespesaDAO();
         objdespesadao.cadastrarDespesa(objdespesadto);
     }
-    private void limparCamposDespesa(){
+
+    /**
+     * Método que limpa os campos preenchidos
+     */
+    private void limparCamposDespesa() {
         jTextFieldIdDespesa.setText("");
         jTextFieldValorDespesa.setText("");
         jTextFieldDataPagementoDespesa.setText("");
         jTextFieldDataPagamentoEsperadoDespesa.setText("");
         jTextFieldContaDespesa.setText("");
 
-   }
-    private void alterarDespesa(){
+    }
+
+    /**
+     * Método que altera as informações com os dados preenchidos
+     */
+    private void alterarDespesa() {
         String dataPagamentoDespesa, dataPagamentoEsperadoDespesa, tipoDespesa;
         Float valorDespesa;
         int contaDespesa, idDespesa;
@@ -396,7 +442,7 @@ private void listarDespesas() {
         tipoDespesa = jList1tipoDespesa.getSelectedValue();
         valorDespesa = Float.parseFloat(jTextFieldValorDespesa.getText());
         contaDespesa = Integer.parseInt(jTextFieldContaDespesa.getText());
-        
+
         DespesaDTO objdespesadto = new DespesaDTO();
         objdespesadto.setId_despesa(idDespesa);
         objdespesadto.setConta_despesa(contaDespesa);
@@ -404,16 +450,20 @@ private void listarDespesas() {
         objdespesadto.setDataPagamento_despesa(dataPagamentoDespesa);
         objdespesadto.setTipo_despesa(tipoDespesa);;
         objdespesadto.setValor_despesa(valorDespesa);
-        
+
         DespesaDAO objdespesadao = new DespesaDAO();
         objdespesadao.alterarDespesa(objdespesadto);
-        
+
     }
-    private void excluirDespesa(){
+
+    /**
+     * Método que exclui os registros carregados
+     */
+    private void excluirDespesa() {
         int idDespesa;
-        
+
         idDespesa = Integer.parseInt(jTextFieldIdDespesa.getText());
-        
+
         DespesaDTO objdespesadto = new DespesaDTO();
         objdespesadto.setId_despesa(idDespesa);
         DespesaDAO objdespesadao = new DespesaDAO();

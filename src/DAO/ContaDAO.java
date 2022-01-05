@@ -9,13 +9,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ContaDAO {       //Metódos do CRUD
+/**
+ * Classe de acesso à tabela Contas do banco de dados
+ * @author Patrick Renan Weber
+ */
+public class ContaDAO {
 
     Connection conexao;
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<ContaDTO> lista = new ArrayList<>();
 
+    /**
+     * Método de inserção das contas no banco de dados
+     *
+     * @param objcontadto Objeto da classe ContaDTO
+     */
     public void cadastrarConta(ContaDTO objcontadto) {
         String comando = "insert into contas (saldo, tipoConta, instituicaoFinanceira) values (?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
@@ -30,8 +39,12 @@ public class ContaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ContaDAO Cadastrar" + erro);
         }
-    } //Insere novas receitas
+    }
 
+    /**
+     * Método que retorna uma lista da tabela Contas do banco de dados
+     * @return lista
+     */
     public ArrayList<ContaDTO> PesquisarConta() {
         String comando = "select * from contas";
         conexao = new ConexaoDAO().conectaBD();
@@ -53,8 +66,14 @@ public class ContaDAO {       //Metódos do CRUD
             JOptionPane.showMessageDialog(null, "ContaDAO Pesquisar" + erro);
         }
         return lista;
-    }       //Retorna a lista de todas receitas
+    }       
 
+    /**
+     * Método que altera os registros da tabela Contas através do Id
+     * especificado
+     * 
+     * @param objcontadto Objeto da classe ContaDTO
+     */
     public void alterarConta(ContaDTO objcontadto) {
         String comando = "update contas set saldo = ?, tipoConta = ?, instituicaoFinanceira = ? where idContas = ?";
         conexao = new ConexaoDAO().conectaBD();
@@ -70,8 +89,13 @@ public class ContaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ContaDAO Alterar" + erro);
         }
-    }   //Altera as receitas
+    }
 
+    /**
+     * Método que faz a exclusão de registros da tabela Contas do banco de dados
+     *
+     * @param objcontadto Objeto da classe ContaDTO
+     */
     public void excluirConta(ContaDTO objcontadto) {
         String comando = "delete from contas where idContas =?";
         conexao = new ConexaoDAO().conectaBD();
@@ -84,6 +108,6 @@ public class ContaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ContaDAO Excluir" + erro);
         }
-    }   //Exclui as receitas
+    }
 
 }

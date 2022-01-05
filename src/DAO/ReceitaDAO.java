@@ -8,14 +8,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ReceitaDAO {       //Metódos do CRUD
+/**
+ * Classe de acesso à tabela receitas do banco de dados
+ *
+ * @author Patrick Renan Weber
+ */
+public class ReceitaDAO {
+
     Connection conexao;
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<ReceitaDTO> lista = new ArrayList<>();
+
+    /**
+     * Método de inserção das receitas no banco de dados
+     *
+     * @param objreceitadto Objeto da classe ReceitaDTO
+     */
     public void cadastrarReceita(ReceitaDTO objreceitadto) {
-        String comando = "insert into receitas (valor, dataRecebimento, dataRecebimentoEsperado,"+
-                         " descricao, conta, tipoReceita) values (?, ?, ?, ?, ?, ?)";
+        String comando = "insert into receitas (valor, dataRecebimento, dataRecebimentoEsperado,"
+                + " descricao, conta, tipoReceita) values (?, ?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -32,11 +44,17 @@ public class ReceitaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Cadastrar" + erro);
         }
-    } //Insere novas receitas
+    }
+
+    /**
+     * Método que retorna uma lista da tabela receitas do banco de dados
+     *
+     * @return lista
+     */
     public ArrayList<ReceitaDTO> PesquisarReceita() {
         String comando = "select * from receitas";
         conexao = new ConexaoDAO().conectaBD();
-        
+
         try {
             pstm = conexao.prepareStatement(comando);
             rs = pstm.executeQuery();
@@ -57,10 +75,17 @@ public class ReceitaDAO {       //Metódos do CRUD
             JOptionPane.showMessageDialog(null, "ReceitaDAO Pesquisar" + erro);
         }
         return lista;
-    }       //Retorna a lista de todas receitas
-    public void alterarReceita(ReceitaDTO objreceitadto){
-        String comando = "update receitas set valor = ?, dataRecebimento = ?, dataRecebimentoEsperado = ?," +
-                         " descricao = ?, conta = ?, tipoReceita = ? where idReceita = ?";
+    }
+
+    /**
+     * Método que altera os registros da tabela receitas através do Id
+     * especificado
+     *
+     * @param objreceitadto Objeto da classe ReceitaDTO
+     */
+    public void alterarReceita(ReceitaDTO objreceitadto) {
+        String comando = "update receitas set valor = ?, dataRecebimento = ?, dataRecebimentoEsperado = ?,"
+                + " descricao = ?, conta = ?, tipoReceita = ? where idReceita = ?";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -78,8 +103,15 @@ public class ReceitaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Alterar" + erro);
         }
-    }   //Altera as receitas
-    public void excluirReceita(ReceitaDTO objreceitadto){
+    }
+
+    /**
+     * Método que faz a exclusão de registros da tabela receitas do banco de
+     * dados
+     *
+     * @param objreceitadto Objeto da classe ReceitaDTO
+     */
+    public void excluirReceita(ReceitaDTO objreceitadto) {
         String comando = "delete from receitas where idReceita =?";
         conexao = new ConexaoDAO().conectaBD();
 
@@ -91,6 +123,6 @@ public class ReceitaDAO {       //Metódos do CRUD
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Excluir" + erro);
         }
-    }   //Exclui as receitas
+    }
 
 }

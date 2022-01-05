@@ -1,14 +1,21 @@
 package VIEW;
+
 import DAO.ReceitaDAO;
 import DTO.ReceitaDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+/**
+ * Formulário de interface para receber os valores da tabela receitas
+ *
+ * @author Patrick Renan Weber
+ */
 public class frmReceitaVIEW extends javax.swing.JFrame {
 
     public frmReceitaVIEW() {
-        initComponents();   
+        initComponents();
         listarReceitas();
     }
 
@@ -214,27 +221,47 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Evento do botão Cadastrar
+     *
+     * @param evt
+     */
     private void jButtonCadastrarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarReceitaActionPerformed
-       cadastrarReceita();
-       listarReceitas();    //Evento do botão "Cadastrar", onde faz a inserção, atualiza a lista e limpa os campos
-       limparCampos();
+        cadastrarReceita();
+        listarReceitas();    //Evento do botão "Cadastrar", onde faz a inserção, atualiza a lista e limpa os campos
+        limparCampos();
     }//GEN-LAST:event_jButtonCadastrarReceitaActionPerformed
-
+    /**
+     * Evento do botão Carregar Campos
+     *
+     * @param evt
+     */
     private void jButtonCarregarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarregarCamposActionPerformed
         carregarCampos();   //Evento do botão "Carregar Campos", onde seta os TextFields com os registros selecionados
     }//GEN-LAST:event_jButtonCarregarCamposActionPerformed
-
+    /**
+     * Evento do botão Limpar Campos
+     *
+     * @param evt
+     */
     private void jButtonLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposActionPerformed
         limparCampos();    //Evento do botão "Limpar Campos", onde deixa em branco os TextFields
     }//GEN-LAST:event_jButtonLimparCamposActionPerformed
-
+    /**
+     * Evento do botão Alterar
+     *
+     * @param evt
+     */
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         alterarReceita();
         listarReceitas(); //Evento do botão "Alterar", onde substitui os dados da tabela
         limparCampos();
     }//GEN-LAST:event_jButtonAlterarActionPerformed
-
+    /**
+     * Evento do botão Excluir
+     *
+     * @param evt
+     */
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         excluirReceita();  //Evento do botão "Excluir", onde exclui os registros selecionados
         listarReceitas();
@@ -275,7 +302,9 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldValorReceita;
     // End of variables declaration//GEN-END:variables
 
-            //Métodos
+    /**
+     * Método que atualiza a TableModel
+     */
     private void listarReceitas() {
         try {
             ReceitaDAO objreceitadao = new ReceitaDAO();
@@ -302,8 +331,12 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
 
         }
     }
-    private void carregarCampos(){
-        
+
+    /**
+     * Método que carrega os campos selecionados
+     */
+    private void carregarCampos() {
+
         int setar = jTableReceita.getSelectedRow();
         jTextFieldIdReceita.setText(jTableReceita.getModel().getValueAt(setar, 0).toString());
         jTextFieldValorReceita.setText(jTableReceita.getModel().getValueAt(setar, 1).toString());
@@ -312,7 +345,11 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         jTextFieldDescricaoReceita.setText(jTableReceita.getModel().getValueAt(setar, 4).toString());
         jTextFieldContaReceita.setText(jTableReceita.getModel().getValueAt(setar, 5).toString());
     }
-    private void cadastrarReceita(){
+
+    /**
+     * Método que cadastra as informações inseridas
+     */
+    private void cadastrarReceita() {
         String dataRecebimentoReceita, dataRecebimentoEsperadoReceita, descricaoReceita, tipoReceita;
         Float valorReceita;
         int contaReceita;
@@ -336,7 +373,11 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         ReceitaDAO objreceitadao = new ReceitaDAO();
         objreceitadao.cadastrarReceita(objreceitadto);
     }
-    private void limparCampos(){
+
+    /**
+     * Método que limpa os campos preenchidos
+     */
+    private void limparCampos() {
         jTextFieldIdReceita.setText("");
         jTextFieldValorReceita.setText("");
         jTextFieldRecebimento.setText("");
@@ -344,8 +385,12 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         jTextFieldDescricaoReceita.setText("");
         jTextFieldContaReceita.setText("");
         jTextFieldDescricaoReceita.requestFocus();
-   }
-    private void alterarReceita(){
+    }
+
+    /**
+     * Método que altera as informações com os dados preenchidos
+     */
+    private void alterarReceita() {
         String dataRecebimentoReceita, dataRecebimentoEsperadoReceita, descricaoReceita, tipoReceita;
         Float valorReceita;
         int contaReceita, idReceita;
@@ -356,7 +401,7 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         tipoReceita = jList1tipoReceita.getSelectedValue();
         valorReceita = Float.parseFloat(jTextFieldValorReceita.getText());
         contaReceita = Integer.parseInt(jTextFieldContaReceita.getText());
-        
+
         ReceitaDTO objreceitadto = new ReceitaDTO();
         objreceitadto.setId_receita(idReceita);
         objreceitadto.setConta_receita(contaReceita);
@@ -365,16 +410,20 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         objreceitadto.setDescricao_receita(descricaoReceita);
         objreceitadto.setTipo_receita(tipoReceita);;
         objreceitadto.setValor_receita(valorReceita);
-        
+
         ReceitaDAO objreceitadao = new ReceitaDAO();
         objreceitadao.alterarReceita(objreceitadto);
-        
+
     }
-    private void excluirReceita(){
+
+    /**
+     * Método que exclui os registros carregados
+     */
+    private void excluirReceita() {
         int idReceita;
-        
+
         idReceita = Integer.parseInt(jTextFieldIdReceita.getText());
-        
+
         ReceitaDTO objreceitadto = new ReceitaDTO();
         objreceitadto.setId_receita(idReceita);
         ReceitaDAO objreceitadao = new ReceitaDAO();
