@@ -33,8 +33,8 @@ public class DespesaDAO {
         try {
             pstm = conexao.prepareStatement(comando);
             pstm.setFloat(1, objdespesadto.getValor_despesa());
-            pstm.setString(2, objdespesadto.getDataPagamento_despesa());
-            pstm.setString(3, objdespesadto.getDataPagamentoEsperado_despesa());
+            pstm.setDate(2, objdespesadto.getDataPagamento_despesa());
+            pstm.setDate(3, objdespesadto.getDataPagamentoEsperado_despesa());
             pstm.setString(4, objdespesadto.getTipo_despesa());
             pstm.setInt(5, objdespesadto.getConta_despesa());
 
@@ -63,8 +63,8 @@ public class DespesaDAO {
                 objdespesadto.setId_despesa(rs.getInt("idDespesa"));
                 objdespesadto.setValor_despesa(rs.getFloat("valor"));
                 objdespesadto.setConta_despesa(rs.getInt("conta"));
-                objdespesadto.setDataPagamento_despesa(rs.getString("dataPagamento"));
-                objdespesadto.setDataPagamentoEsperado_despesa(rs.getString("dataPagamentoEsperado"));
+                objdespesadto.setDataPagamento_despesa(rs.getDate("dataPagamento"));
+                objdespesadto.setDataPagamentoEsperado_despesa(rs.getDate("dataPagamentoEsperado"));
                 objdespesadto.setTipo_despesa(rs.getString("tipoDespesa"));
 
                 lista.add(objdespesadto);
@@ -89,8 +89,8 @@ public class DespesaDAO {
         try {
             pstm = conexao.prepareStatement(comando);
             pstm.setFloat(1, objdespesadto.getValor_despesa());
-            pstm.setString(2, objdespesadto.getDataPagamento_despesa());
-            pstm.setString(3, objdespesadto.getDataPagamentoEsperado_despesa());
+            pstm.setDate(2, objdespesadto.getDataPagamento_despesa());
+            pstm.setDate(3, objdespesadto.getDataPagamentoEsperado_despesa());
             pstm.setInt(4, objdespesadto.getConta_despesa());
             pstm.setString(5, objdespesadto.getTipo_despesa());
             pstm.setInt(6, objdespesadto.getId_despesa());
