@@ -7,7 +7,8 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 /**
  * Classe de acesso à tabela receitas do banco de dados
  *
@@ -19,6 +20,7 @@ public class ReceitaDAO {
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<ReceitaDTO> lista = new ArrayList<>();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
 
     /**
      * Método de inserção das receitas no banco de dados
@@ -33,8 +35,8 @@ public class ReceitaDAO {
         try {
             pstm = conexao.prepareStatement(comando);
             pstm.setFloat(1, objreceitadto.getValor_receita());
-            pstm.setString(2, objreceitadto.getDataRecebimento_receita());
-            pstm.setString(3, objreceitadto.getDataRecebimentoEsperado_receita());
+            pstm.setDate(2, objreceitadto.getDataRecebimento_receita());
+            pstm.setDate(3, objreceitadto.getDataRecebimentoEsperado_receita());
             pstm.setString(4, objreceitadto.getDescricao_receita());
             pstm.setInt(5, objreceitadto.getConta_receita());
             pstm.setString(6, objreceitadto.getTipo_receita());
@@ -64,8 +66,8 @@ public class ReceitaDAO {
                 objreceitadto.setId_receita(rs.getInt("idReceita"));
                 objreceitadto.setValor_receita(rs.getFloat("valor"));
                 objreceitadto.setConta_receita(rs.getInt("conta"));
-                objreceitadto.setDataRecebimento_receita(rs.getString("dataRecebimento"));
-                objreceitadto.setDataRecebimentoEsperado_receita(rs.getString("dataRecebimentoEsperado"));
+                objreceitadto.setDataRecebimento_receita(rs.getDate("dataRecebimento"));
+                objreceitadto.setDataRecebimentoEsperado_receita(rs.getDate("dataRecebimentoEsperado"));
                 objreceitadto.setDescricao_receita(rs.getString("descricao"));
                 objreceitadto.setTipo_receita(rs.getString("tipoReceita"));
 
@@ -91,8 +93,8 @@ public class ReceitaDAO {
         try {
             pstm = conexao.prepareStatement(comando);
             pstm.setFloat(1, objreceitadto.getValor_receita());
-            pstm.setString(2, objreceitadto.getDataRecebimento_receita());
-            pstm.setString(3, objreceitadto.getDataRecebimentoEsperado_receita());
+            pstm.setDate(2, objreceitadto.getDataRecebimento_receita());
+            pstm.setDate(3, objreceitadto.getDataRecebimentoEsperado_receita());
             pstm.setString(4, objreceitadto.getDescricao_receita());
             pstm.setInt(5, objreceitadto.getConta_receita());
             pstm.setString(6, objreceitadto.getTipo_receita());
@@ -124,5 +126,27 @@ public class ReceitaDAO {
             JOptionPane.showMessageDialog(null, "ReceitaDAO Excluir" + erro);
         }
     }
+    public ArrayList<ReceitaDTO> PesquisarTipo(String tipo){
+        ReceitaDTO objreceitadto = new ReceitaDTO();
+        String comando = "select * from receitas where tipoReceita = '"+objreceitadto.getFiltroTipo()+"'";
+        conexao = new ConexaoDAO().conectaBD();
+        try {
+            pstm = conexao.prepareStatement(comando);
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                objreceitadto.setId_receita(rs.getInt("idReceita"));
+                objreceitadto.setValor_receita(rs.getFloat("valor"));
+                objreceitadto.setConta_receita(rs.getInt("conta"));
+                objreceitadto.setDataRecebimento_receita(rs.getDate("dataRecebimento"));
+                objreceitadto.setDataRecebimentoEsperado_receita(rs.getDate("dataRecebimentoEsperado"));
+                objreceitadto.setDescricao_receita(rs.getString("descricao"));
+                objreceitadto.setTipo_receita(rs.getString("tipoReceita"));
 
+                lista.add(objreceitadto);
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ReceitaDAO PesquisarFiltro " + erro);
+        }
+        return lista;
+    }
 }

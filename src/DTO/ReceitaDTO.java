@@ -1,5 +1,7 @@
 package DTO;
 
+import java.sql.Date;
+
 /**
  * Classe de transferências de dados através dos métodos get e set
  *
@@ -7,46 +9,13 @@ package DTO;
  */
 public class ReceitaDTO {
 
-    private String dataRecebimento_receita, dataRecebimentoEsperado_receita, descricao_receita, tipo_receita;
+    private String descricao_receita, tipo_receita,filtroTipo;
     private Float valor_receita;
     private int conta_receita, id_receita;
+    private Date dataRecebimento_receita;
+    private Date dataRecebimentoEsperado_receita;
 
-    /**
-     * Método get da propriedade DataRecebimento_receita
-     *
-     * @return dataRecebimento_receita
-     */
-    public String getDataRecebimento_receita() {
-        return dataRecebimento_receita;
-    }
 
-    /**
-     * Método set da propriedade DataRecebimento_receita
-     *
-     * @param dataRecebimento_receita Fornece a data de recebimento da receita
-     */
-    public void setDataRecebimento_receita(String dataRecebimento_receita) {
-        this.dataRecebimento_receita = dataRecebimento_receita;
-    }
-
-    /**
-     * Método get da propriedade DataRecebimentoEsperado_receita
-     *
-     * @return dataRecebimentoEsperado_receita
-     */
-    public String getDataRecebimentoEsperado_receita() {
-        return dataRecebimentoEsperado_receita;
-    }
-
-    /**
-     * Método set da propriedade DataRecebimentoEsperado_receita
-     *
-     * @param dataRecebimentoEsperado_receita Fornece a data de recebimento
-     * esperado da receita
-     */
-    public void setDataRecebimentoEsperado_receita(String dataRecebimentoEsperado_receita) {
-        this.dataRecebimentoEsperado_receita = dataRecebimentoEsperado_receita;
-    }
 
     /**
      * Método get da propriedade Descricao_receita
@@ -137,6 +106,48 @@ public class ReceitaDTO {
      */
     public void setId_receita(int id_receita) {
         this.id_receita = id_receita;
+    }
+
+    /**
+     * @return the dataRecebimento_receita
+     */
+    public Date getDataRecebimento_receita() {
+        return dataRecebimento_receita;
+    }
+
+    /**
+     * @param dataRecebimento_receita the dataRecebimento_receita to set
+     */
+    public void setDataRecebimento_receita(Date dataRecebimento_receita) {
+        this.dataRecebimento_receita = dataRecebimento_receita;
+    }
+
+    /**
+     * @return the dataRecebimentoEsperado_receita
+     */
+    public Date getDataRecebimentoEsperado_receita() {
+        return dataRecebimentoEsperado_receita;
+    }
+
+    /**
+     * @param dataRecebimentoEsperado_receita the dataRecebimentoEsperado_receita to set
+     */
+    public void setDataRecebimentoEsperado_receita(Date dataRecebimentoEsperado_receita) {
+        this.dataRecebimentoEsperado_receita = dataRecebimentoEsperado_receita;
+    }
+
+    /**
+     * @return the filtroTipo
+     */
+    public String getFiltroTipo() {
+        return filtroTipo;
+    }
+
+    /**
+     * @param filtroTipo the filtroTipo to set
+     */
+    public void setFiltroTipo(String filtroTipo) {
+        this.filtroTipo = filtroTipo;
     }
 
 }

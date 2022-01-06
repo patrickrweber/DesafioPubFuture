@@ -1,5 +1,7 @@
 package DTO;
 
+import java.sql.Date;
+
 /**
  * Classe de transferências de dados através dos métodos get e set
  *
@@ -7,46 +9,10 @@ package DTO;
  */
 public class DespesaDTO {
 
-    private String dataPagamento_despesa, dataPagamentoEsperado_despesa, tipo_despesa;
+    private String tipo_despesa;
     private Float valor_despesa;
     private int conta_despesa, id_despesa;
-
-    /**
-     * Método get da propriedade DataPagamento_despesa
-     *
-     * @return dataPagamento_despesa
-     */
-    public String getDataPagamento_despesa() {
-        return dataPagamento_despesa;
-    }
-
-    /**
-     * Método set da propriedade DataPagamento_despesa
-     *
-     * @param dataPagamento_despesa Fornece a data de pagamento da despesa
-     */
-    public void setDataPagamento_despesa(String dataPagamento_despesa) {
-        this.dataPagamento_despesa = dataPagamento_despesa;
-    }
-
-    /**
-     * Método get da propriedade DataPagamentoEsperado_despesa
-     *
-     * @return dataPagamentoEsperado_despesa
-     */
-    public String getDataPagamentoEsperado_despesa() {
-        return dataPagamentoEsperado_despesa;
-    }
-
-    /**
-     * Método set da propriedade DataPagamentoEsperado_despesa
-     *
-     * @param dataPagamentoEsperado_despesa Fornece a data de pagamento esperado
-     * da despesa
-     */
-    public void setDataPagamentoEsperado_despesa(String dataPagamentoEsperado_despesa) {
-        this.dataPagamentoEsperado_despesa = dataPagamentoEsperado_despesa;
-    }
+    private Date dataPagamento_despesa, dataPagamentoEsperado_despesa;
 
     /**
      * Método get da propriedade Tipo_despesa
@@ -119,5 +85,42 @@ public class DespesaDTO {
      */
     public void setId_despesa(int id_despesa) {
         this.id_despesa = id_despesa;
+    }
+
+    /**
+     * Método get da propriedade DataPagamento_despesa
+     *
+     * @return dataPagamento_despesa
+     */
+    public Date getDataPagamento_despesa() {
+        return dataPagamento_despesa;
+    }
+
+    /**
+     * Método set da propriedade DataPagamento_despesa
+     *
+     * @param dataPagamento_despesa Fornece a data de pagamento da despesa
+     */
+    public void setDataPagamento_despesa(Date dataPagamento_despesa) {
+        this.dataPagamento_despesa = dataPagamento_despesa;
+    }
+
+    /**
+     * Método get da propriedade DataPagamentoEsperado_despesa
+     *
+     * @return dataPagamentoEsperado_despesa
+     */
+    public Date getDataPagamentoEsperado_despesa() {
+        return dataPagamentoEsperado_despesa;
+    }
+
+    /**
+     * Método set da propriedade DataPagamentoEsperado_despesa
+     *
+     * @param dataPagamentoEsperado_despesa Fornece a data de pagamento esperado
+     * da despesa
+     */
+    public void setDataPagamentoEsperado_despesa(Date dataPagamentoEsperado_despesa) {
+        this.dataPagamentoEsperado_despesa = dataPagamentoEsperado_despesa;
     }
 }
