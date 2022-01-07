@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Classe de acesso à tabela Contas do banco de dados
+ *
  * @author Patrick Renan Weber
  */
 public class ContaDAO {
@@ -43,6 +44,7 @@ public class ContaDAO {
 
     /**
      * Método que retorna uma lista da tabela Contas do banco de dados
+     *
      * @return lista
      */
     public ArrayList<ContaDTO> PesquisarConta() {
@@ -66,12 +68,12 @@ public class ContaDAO {
             JOptionPane.showMessageDialog(null, "ContaDAO Pesquisar" + erro);
         }
         return lista;
-    }       
+    }
 
     /**
      * Método que altera os registros da tabela Contas através do Id
      * especificado
-     * 
+     *
      * @param objcontadto Objeto da classe ContaDTO
      */
     public void alterarConta(ContaDTO objcontadto) {
@@ -106,7 +108,107 @@ public class ContaDAO {
             pstm.execute();
             pstm.close();
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ContaDAO Excluir" + erro);
+            JOptionPane.showMessageDialog(null, "ContaDAO Excluir " + erro);
+        }
+    }
+
+    /**
+     * Método que seleciona os registros em ordem crescendo através dos ids
+     * estipulados
+     *
+     * @param objcontadto Objeto da classe ContaDTO
+     * @return lista
+     */
+    public ArrayList<ContaDTO> transferirSaldoASC(ContaDTO objcontadto) {
+        String comando = "select * from contas where idContas =" + objcontadto.getConta1() + " OR idContas =" + objcontadto.getConta2();
+        conexao = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conexao.prepareStatement(comando);
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                ContaDTO objconta1dto = new ContaDTO();
+                objconta1dto.setId_conta(rs.getInt("idContas"));
+                objconta1dto.setSaldo_conta(rs.getFloat("saldo"));
+                objconta1dto.setTipo_conta(rs.getString("tipoConta"));
+                objconta1dto.setInstituicao(rs.getString("instituicaoFinanceira"));
+
+                lista.add(objconta1dto);
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ContaDAO Transferir " + erro);
+        }
+        return lista;
+    }
+
+    /**
+     * Método que seleciona os registros em ordem decrescente através dos ids
+     * estipulados
+     *
+     * @param objcontadto Objeto da classe ContaDTO
+     * @return lista
+     */
+    public ArrayList<ContaDTO> transferirSaldoDSC(ContaDTO objcontadto) {
+        String comando = "select * from contas where idContas =" + objcontadto.getConta1() + " OR idContas =" + objcontadto.getConta2() + " order by idContas desc";
+        conexao = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conexao.prepareStatement(comando);
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                ContaDTO objconta1dto = new ContaDTO();
+                objconta1dto.setId_conta(rs.getInt("idContas"));
+                objconta1dto.setSaldo_conta(rs.getFloat("saldo"));
+                objconta1dto.setTipo_conta(rs.getString("tipoConta"));
+                objconta1dto.setInstituicao(rs.getString("instituicaoFinanceira"));
+
+                lista.add(objconta1dto);
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ContaDAO Transferir " + erro);
+        }
+        return lista;
+    }
+
+    /**
+     * Método que faz o update no banco de dados com os novos valores de saldo
+     *
+     * @param objcontadto Objeto da classe ContaDTO
+     */
+    public void alterarSaldo1(ContaDTO objcontadto) {
+        String comando = "update contas set saldo = ? where idContas = ?";
+        conexao = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conexao.prepareStatement(comando);
+            pstm.setFloat(1, objcontadto.getNovoSaldo1());
+            pstm.setInt(2, objcontadto.getConta1());
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ContaDAO Alterar Saldo " + erro);
+        }
+    }
+
+    /**
+     * Método que faz o update no banco de dados com os novos valores de saldo
+     *
+     * @param objcontadto Objeto da classe ContaDTO
+     */
+    public void alterarSaldo2(ContaDTO objcontadto) {
+        String comando = "update contas set saldo = ? where idContas = ?";
+        conexao = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conexao.prepareStatement(comando);
+            pstm.setFloat(1, objcontadto.getNovoSaldo2());
+            pstm.setInt(2, objcontadto.getConta2());
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ContaDAO Alterar Saldo " + erro);
         }
     }
 

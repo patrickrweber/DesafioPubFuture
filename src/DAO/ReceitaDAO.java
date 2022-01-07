@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+
 /**
  * Classe de acesso à tabela receitas do banco de dados
  *
@@ -29,7 +30,7 @@ public class ReceitaDAO {
      */
     public void cadastrarReceita(ReceitaDTO objreceitadto) {
         String comando = "insert into receitas (valor, dataRecebimento, dataRecebimentoEsperado,"
-                + " descricao, conta, tipoReceita) values (?, ?, ?, ?, ?, ?)";
+                + " descricao, contas_idContas, tipoReceita) values (?, ?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -44,7 +45,7 @@ public class ReceitaDAO {
             pstm.execute();
             pstm.close();
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ReceitaDAO Cadastrar" + erro);
+            JOptionPane.showMessageDialog(null, "ReceitaDAO Cadastrar " + erro);
         }
     }
 
@@ -63,9 +64,9 @@ public class ReceitaDAO {
 
             while (rs.next()) {
                 ReceitaDTO objreceitadto = new ReceitaDTO();
-                objreceitadto.setId_receita(rs.getInt("idReceita"));
+                objreceitadto.setId_receita(rs.getInt("idReceitas"));
                 objreceitadto.setValor_receita(rs.getFloat("valor"));
-                objreceitadto.setConta_receita(rs.getInt("conta"));
+                objreceitadto.setConta_receita(rs.getInt("contas_idContas"));
                 objreceitadto.setDataRecebimento_receita(rs.getDate("dataRecebimento"));
                 objreceitadto.setDataRecebimentoEsperado_receita(rs.getDate("dataRecebimentoEsperado"));
                 objreceitadto.setDescricao_receita(rs.getString("descricao"));
@@ -74,7 +75,7 @@ public class ReceitaDAO {
                 lista.add(objreceitadto);
             }
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ReceitaDAO Pesquisar" + erro);
+            JOptionPane.showMessageDialog(null, "ReceitaDAO Pesquisar " + erro);
         }
         return lista;
     }
@@ -87,7 +88,7 @@ public class ReceitaDAO {
      */
     public void alterarReceita(ReceitaDTO objreceitadto) {
         String comando = "update receitas set valor = ?, dataRecebimento = ?, dataRecebimentoEsperado = ?,"
-                + " descricao = ?, conta = ?, tipoReceita = ? where idReceita = ?";
+                + " descricao = ?, contas_idContas = ?, tipoReceita = ? where idReceitas = ?";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -103,7 +104,7 @@ public class ReceitaDAO {
             pstm.execute();
             pstm.close();
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ReceitaDAO Alterar" + erro);
+            JOptionPane.showMessageDialog(null, "ReceitaDAO Alterar " + erro);
         }
     }
 
@@ -114,7 +115,7 @@ public class ReceitaDAO {
      * @param objreceitadto Objeto da classe ReceitaDTO
      */
     public void excluirReceita(ReceitaDTO objreceitadto) {
-        String comando = "delete from receitas where idReceita =?";
+        String comando = "delete from receitas where idReceitas =?";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -123,30 +124,9 @@ public class ReceitaDAO {
             pstm.execute();
             pstm.close();
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ReceitaDAO Excluir" + erro);
+            JOptionPane.showMessageDialog(null, "ReceitaDAO Excluir " + erro);
         }
     }
-    public ArrayList<ReceitaDTO> PesquisarTipo(String tipo){
-        ReceitaDTO objreceitadto = new ReceitaDTO();
-        String comando = "select * from receitas where tipoReceita = '"+objreceitadto.getFiltroTipo()+"'";
-        conexao = new ConexaoDAO().conectaBD();
-        try {
-            pstm = conexao.prepareStatement(comando);
-            rs = pstm.executeQuery();
-            while (rs.next()) {
-                objreceitadto.setId_receita(rs.getInt("idReceita"));
-                objreceitadto.setValor_receita(rs.getFloat("valor"));
-                objreceitadto.setConta_receita(rs.getInt("conta"));
-                objreceitadto.setDataRecebimento_receita(rs.getDate("dataRecebimento"));
-                objreceitadto.setDataRecebimentoEsperado_receita(rs.getDate("dataRecebimentoEsperado"));
-                objreceitadto.setDescricao_receita(rs.getString("descricao"));
-                objreceitadto.setTipo_receita(rs.getString("tipoReceita"));
 
-                lista.add(objreceitadto);
-            }
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ReceitaDAO PesquisarFiltro " + erro);
-        }
-        return lista;
-    }
+ 
 }

@@ -9,10 +9,10 @@ import java.sql.Date;
  */
 public class ReceitaDTO {
 
-    private String descricao_receita, tipo_receita,filtroTipo;
+    private String descricao_receita, tipo_receita;
     private Float valor_receita;
     private int conta_receita, id_receita;
-    private Date dataRecebimento_receita;
+    private Date dataRecebimento_receita, dataInicio, dataFim;
     private Date dataRecebimentoEsperado_receita;
 
 
@@ -137,17 +137,30 @@ public class ReceitaDTO {
     }
 
     /**
-     * @return the filtroTipo
+     * @return the dataInicio
      */
-    public String getFiltroTipo() {
-        return filtroTipo;
+    public Date getDataInicio() {
+        return dataInicio;
     }
 
     /**
-     * @param filtroTipo the filtroTipo to set
+     * @param dataInicio the dataInicio to set
      */
-    public void setFiltroTipo(String filtroTipo) {
-        this.filtroTipo = filtroTipo;
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
+    /**
+     * @return the dataFim
+     */
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    /**
+     * @param dataFim the dataFim to set
+     */
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
 }

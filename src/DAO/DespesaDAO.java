@@ -27,7 +27,7 @@ public class DespesaDAO {
      */
     public void cadastrarDespesa(DespesaDTO objdespesadto) {
         String comando = "insert into despesas (valor, dataPagamento, dataPagamentoEsperado,"
-                + " tipoDespesa, conta) values (?, ?, ?, ?, ?)";
+                + " tipoDespesa, contas_idContas) values (?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -60,9 +60,9 @@ public class DespesaDAO {
 
             while (rs.next()) {
                 DespesaDTO objdespesadto = new DespesaDTO();
-                objdespesadto.setId_despesa(rs.getInt("idDespesa"));
+                objdespesadto.setId_despesa(rs.getInt("idDespesas"));
                 objdespesadto.setValor_despesa(rs.getFloat("valor"));
-                objdespesadto.setConta_despesa(rs.getInt("conta"));
+                objdespesadto.setConta_despesa(rs.getInt("contas_idContas"));
                 objdespesadto.setDataPagamento_despesa(rs.getDate("dataPagamento"));
                 objdespesadto.setDataPagamentoEsperado_despesa(rs.getDate("dataPagamentoEsperado"));
                 objdespesadto.setTipo_despesa(rs.getString("tipoDespesa"));
@@ -83,7 +83,7 @@ public class DespesaDAO {
      */
     public void alterarDespesa(DespesaDTO objdespesadto) {
         String comando = "update despesas set valor = ?, dataPagamento = ?, dataPagamentoEsperado = ?,"
-                + " conta = ?, tipoDespesa = ? where idDespesa = ?";
+                + " contas_idContas = ?, tipoDespesa = ? where idDespesas = ?";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
@@ -108,7 +108,7 @@ public class DespesaDAO {
      * @param objdespesadto Objeto da classe DespesaDTO
      */
     public void excluirDespesa(DespesaDTO objdespesadto) {
-        String comando = "delete from despesas where idDespesa =?";
+        String comando = "delete from despesas where idDespesas =?";
         conexao = new ConexaoDAO().conectaBD();
 
         try {
