@@ -55,6 +55,12 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         jTextFieldRecebimentoEsperado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldFiltroTipo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldFiltroDataInicio = new javax.swing.JTextField();
+        jTextFieldFiltroDataFim = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButtonFiltroData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +145,14 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Consulta por Data");
+
+        jLabel3.setText("Data Início:");
+
+        jLabel4.setText("Data Fim:");
+
+        jButtonFiltroData.setText("Filtrar Data");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,21 +161,11 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelDataRecebimentoEsperado)
-                                    .addComponent(jLabelValorReceita)
-                                    .addComponent(jLabelIdReceita)
-                                    .addComponent(jLabelDataRecebimentoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldValorReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldIdReceita)
-                                    .addComponent(jTextFieldRecebimento)
-                                    .addComponent(jTextFieldRecebimentoEsperado)))
-                            .addComponent(jTextFieldDescricaoReceita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelContaReceita)
                                     .addComponent(jLabelTipoReceita)
@@ -170,18 +174,45 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(66, 66, 66)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldContaReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
+                                        .addComponent(jTextFieldFiltroTipo))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldFiltroTipo)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldContaReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelDataRecebimentoEsperado)
+                                        .addComponent(jLabelValorReceita)
+                                        .addComponent(jLabelIdReceita)
+                                        .addComponent(jLabelDataRecebimentoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldValorReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldIdReceita)
+                                        .addComponent(jTextFieldRecebimento)
+                                        .addComponent(jTextFieldRecebimentoEsperado)))
+                                .addComponent(jTextFieldDescricaoReceita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(16, 16, 16))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrarReceita)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonVoltarReceita)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonCadastrarReceita)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonVoltarReceita)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonFiltroData))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldFiltroDataInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldFiltroDataFim))))
+                        .addGap(60, 60, 60)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonAlterar)
@@ -192,7 +223,7 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonCarregarCampos))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,17 +262,29 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jTextFieldFiltroTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldFiltroDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextFieldFiltroDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCarregarCampos)
                     .addComponent(jButtonVoltarReceita)
                     .addComponent(jButtonCadastrarReceita)
                     .addComponent(jButtonLimparCampos)
                     .addComponent(jButtonAlterar)
-                    .addComponent(jButtonExcluir)))
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonFiltroData))
+                .addContainerGap())
         );
 
         pack();
@@ -311,9 +354,13 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrarReceita;
     private javax.swing.JButton jButtonCarregarCampos;
     private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonFiltroData;
     private javax.swing.JButton jButtonLimparCampos;
     private javax.swing.JButton jButtonVoltarReceita;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelContaReceita;
     private javax.swing.JLabel jLabelDataRecebimentoEsperado;
     private javax.swing.JLabel jLabelDataRecebimentoReceita;
@@ -327,6 +374,8 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
     private javax.swing.JTable jTableReceita;
     private javax.swing.JTextField jTextFieldContaReceita;
     private javax.swing.JTextField jTextFieldDescricaoReceita;
+    private javax.swing.JTextField jTextFieldFiltroDataFim;
+    private javax.swing.JTextField jTextFieldFiltroDataInicio;
     private javax.swing.JTextField jTextFieldFiltroTipo;
     private javax.swing.JTextField jTextFieldIdReceita;
     private javax.swing.JTextField jTextFieldRecebimento;
@@ -405,6 +454,7 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         objreceitadto.setDataRecebimentoEsperado_receita(c);
         objreceitadto.setDescricao_receita(descricaoReceita);
         objreceitadto.setTipo_receita(tipoReceita);
+        
         ReceitaDAO objreceitadao = new ReceitaDAO();
         objreceitadao.cadastrarReceita(objreceitadto);
     }
@@ -481,4 +531,5 @@ public class frmReceitaVIEW extends javax.swing.JFrame {
         
         tr.setRowFilter(RowFilter.regexFilter(query));
     }
+    
 }

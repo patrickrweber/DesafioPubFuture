@@ -47,7 +47,7 @@ public class ConexaoDAO {
     public Connection conectaBD() {      //Método que conecta o banco de dados
         Connection conexao = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/desafiopubfuture?user=root&password=";
+            String url = "jdbc:mysql://localhost:3306/desafiopubfutureder?user=root&password=";
             conexao = DriverManager.getConnection(url);     //Define a url para conexão do banco local e adicionar o driver
 
         } catch (SQLException e) {

@@ -49,6 +49,15 @@ public class frmConta extends javax.swing.JFrame {
         jList1tipoConta = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldSaldoTotal = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldConta1 = new javax.swing.JTextField();
+        jTextFieldConta2 = new javax.swing.JTextField();
+        jTextFieldValor = new javax.swing.JTextField();
+        jButtonTransferir = new javax.swing.JButton();
+        jButtonMostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,48 +130,87 @@ public class frmConta extends javax.swing.JFrame {
 
         jLabel1.setText("Saldo Total");
 
+        jTextFieldSaldoTotal.setEnabled(false);
+
+        jLabel2.setText("Transferência");
+
+        jLabel3.setText("De (Número conta)");
+
+        jLabel4.setText("Para (Número conta)");
+
+        jLabel5.setText("Valor");
+
+        jButtonTransferir.setText("Transferir");
+        jButtonTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransferirActionPerformed(evt);
+            }
+        });
+
+        jButtonMostrar.setText("Mostrar Contas");
+        jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelValorSaldo)
-                            .addComponent(jLabelIdConta))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jTextFieldIdConta)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrarConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonVoltarConta))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTipoConta)
-                            .addComponent(jLabelInstituicao)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jTextFieldSaldoTotal))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelValorSaldo)
+                                    .addComponent(jLabelIdConta))
+                                .addGap(67, 67, 67)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldIdConta)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonCadastrarConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonVoltarConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addComponent(jButtonTransferir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabelTipoConta)
+                                    .addComponent(jLabelInstituicao))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldSaldoTotal)
+                                    .addComponent(jTextFieldConta1)
+                                    .addComponent(jTextFieldConta2)
+                                    .addComponent(jTextFieldValor)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAlterarConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonExcluirConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonLimparCamposConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCarregarCamposConta)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(29, 29, 29))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAlterarConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonExcluirConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonLimparCamposConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCarregarCamposConta))
+                            .addComponent(jButtonMostrar))
+                        .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,24 +230,41 @@ public class frmConta extends javax.swing.JFrame {
                             .addComponent(jLabelTipoConta)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelInstituicao))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldConta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextFieldConta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelInstituicao)
-                            .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldSaldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(41, 41, 41))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jTextFieldSaldoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonMostrar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCarregarCamposConta)
                     .addComponent(jButtonVoltarConta)
                     .addComponent(jButtonCadastrarConta)
                     .addComponent(jButtonLimparCamposConta)
                     .addComponent(jButtonAlterarConta)
-                    .addComponent(jButtonExcluirConta)))
+                    .addComponent(jButtonExcluirConta)
+                    .addComponent(jButtonTransferir)))
         );
 
         pack();
@@ -211,7 +276,6 @@ public class frmConta extends javax.swing.JFrame {
      */
     private void jButtonCadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarContaActionPerformed
         cadastrarConta();
-        listarcontas();
         limparCamposConta();
     }//GEN-LAST:event_jButtonCadastrarContaActionPerformed
     /**
@@ -237,7 +301,6 @@ public class frmConta extends javax.swing.JFrame {
      */
     private void jButtonAlterarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarContaActionPerformed
         alterarConta();
-        listarcontas();
         limparCamposConta();
     }//GEN-LAST:event_jButtonAlterarContaActionPerformed
     /**
@@ -247,9 +310,21 @@ public class frmConta extends javax.swing.JFrame {
      */
     private void jButtonExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirContaActionPerformed
         excluirConta();
-        listarcontas();
         limparCamposConta();
     }//GEN-LAST:event_jButtonExcluirContaActionPerformed
+
+    private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
+        listarcontas();
+    }//GEN-LAST:event_jButtonMostrarActionPerformed
+    /**
+     * Evento do botao transferir
+     *
+     * @param evt
+     */
+    private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
+        transferirSaldo();
+        listarcontas();
+    }//GEN-LAST:event_jButtonTransferirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,8 +367,14 @@ public class frmConta extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCarregarCamposConta;
     private javax.swing.JButton jButtonExcluirConta;
     private javax.swing.JButton jButtonLimparCamposConta;
+    private javax.swing.JButton jButtonMostrar;
+    private javax.swing.JButton jButtonTransferir;
     private javax.swing.JButton jButtonVoltarConta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelIdConta;
     private javax.swing.JLabel jLabelInstituicao;
     private javax.swing.JLabel jLabelTipoConta;
@@ -302,10 +383,13 @@ public class frmConta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableConta;
+    private javax.swing.JTextField jTextFieldConta1;
+    private javax.swing.JTextField jTextFieldConta2;
     private javax.swing.JTextField jTextFieldIdConta;
     private javax.swing.JTextField jTextFieldInstituicao;
     private javax.swing.JTextField jTextFieldSaldo;
     private javax.swing.JTextField jTextFieldSaldoTotal;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -411,8 +495,92 @@ public class frmConta extends javax.swing.JFrame {
 
         ContaDTO objcontadto = new ContaDTO();
         objcontadto.setId_conta(idConta);
+
         ContaDAO objcontadao = new ContaDAO();
         objcontadao.excluirConta(objcontadto);
+    }
+
+    /**
+     * Método que faz a transferência de saldo entre contas
+     */
+    private void transferirSaldo() {
+        float saldoConta1 = 0, saldoConta2 = 0, valorTransferencia = 0, novoSaldo1 = 0, novoSaldo2 = 0;
+        int idConta1, idConta2;
+
+        idConta1 = Integer.parseInt(jTextFieldConta1.getText());
+        idConta2 = Integer.parseInt(jTextFieldConta2.getText());
+
+        valorTransferencia = Float.parseFloat(jTextFieldValor.getText());
+
+        ContaDTO objcontadto = new ContaDTO();
+        objcontadto.setConta1(idConta1);
+        objcontadto.setConta2(idConta2);
+        if (idConta1 < idConta2) {
+            try {
+                ContaDAO objcontadao = new ContaDAO();
+
+                DefaultTableModel model = (DefaultTableModel) jTableConta.getModel();
+                model.setNumRows(0);
+
+                ArrayList<ContaDTO> lista = objcontadao.transferirSaldoASC(objcontadto);
+
+                for (int num = 0; num < lista.size(); num++) {
+                    model.addRow(new Object[]{
+                        lista.get(num).getId_conta(),
+                        lista.get(num).getSaldo_conta(),
+                        lista.get(num).getTipo_conta(),
+                        lista.get(num).getInstituicao(),});
+
+                }
+                saldoConta1 = lista.get(0).getSaldo_conta();
+                saldoConta2 = lista.get(1).getSaldo_conta();
+                novoSaldo1 = saldoConta1 - valorTransferencia;
+                novoSaldo2 = saldoConta2 + valorTransferencia;
+
+                objcontadto.setNovoSaldo1(novoSaldo1);
+                objcontadto.setNovoSaldo2(novoSaldo2);
+
+                objcontadao.alterarSaldo1(objcontadto);
+                objcontadao.alterarSaldo2(objcontadto);
+
+            } catch (Exception erro) {
+                JOptionPane.showMessageDialog(null, "Transferir ASC View " + erro);
+
+            }
+        }
+        if (idConta1 > idConta2) {
+            try {
+                ContaDAO objcontadao = new ContaDAO();
+
+                DefaultTableModel model = (DefaultTableModel) jTableConta.getModel();
+                model.setNumRows(0);
+
+                ArrayList<ContaDTO> lista = objcontadao.transferirSaldoDSC(objcontadto);
+
+                for (int num = 0; num < lista.size(); num++) {
+                    model.addRow(new Object[]{
+                        lista.get(num).getId_conta(),
+                        lista.get(num).getSaldo_conta(),
+                        lista.get(num).getTipo_conta(),
+                        lista.get(num).getInstituicao(),});
+
+                }
+                saldoConta1 = lista.get(0).getSaldo_conta();
+                saldoConta2 = lista.get(1).getSaldo_conta();
+                novoSaldo1 = saldoConta1 - valorTransferencia;
+                novoSaldo2 = saldoConta2 + valorTransferencia;
+
+                objcontadto.setNovoSaldo1(novoSaldo1);
+                objcontadto.setNovoSaldo2(novoSaldo2);
+
+                objcontadao.alterarSaldo1(objcontadto);
+                objcontadao.alterarSaldo2(objcontadto);
+
+            } catch (Exception erro) {
+                JOptionPane.showMessageDialog(null, "Transferir DSC View " + erro);
+
+            }
+        }
     }
 
 }
