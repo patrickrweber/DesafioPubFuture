@@ -1,6 +1,6 @@
 package DTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * Classe de transferências de dados através dos métodos get e set
@@ -12,8 +12,7 @@ public class ReceitaDTO {
     private String descricao_receita, tipo_receita;
     private Float valor_receita;
     private int conta_receita, id_receita;
-    private Date dataRecebimento_receita, dataInicio, dataFim;
-    private Date dataRecebimentoEsperado_receita;
+    private LocalDate dataRecebimento_receita, dataInicio, dataFim, dataRecebimentoEsperado_receita;
 
 
 
@@ -111,56 +110,60 @@ public class ReceitaDTO {
     /**
      * @return the dataRecebimento_receita
      */
-    public Date getDataRecebimento_receita() {
+    public LocalDate getDataRecebimento_receita() {
         return dataRecebimento_receita;
     }
 
     /**
      * @param dataRecebimento_receita the dataRecebimento_receita to set
      */
-    public void setDataRecebimento_receita(Date dataRecebimento_receita) {
+    public void setDataRecebimento_receita(LocalDate dataRecebimento_receita) {
         this.dataRecebimento_receita = dataRecebimento_receita;
-    }
-
-    /**
-     * @return the dataRecebimentoEsperado_receita
-     */
-    public Date getDataRecebimentoEsperado_receita() {
-        return dataRecebimentoEsperado_receita;
-    }
-
-    /**
-     * @param dataRecebimentoEsperado_receita the dataRecebimentoEsperado_receita to set
-     */
-    public void setDataRecebimentoEsperado_receita(Date dataRecebimentoEsperado_receita) {
-        this.dataRecebimentoEsperado_receita = dataRecebimentoEsperado_receita;
     }
 
     /**
      * @return the dataInicio
      */
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
     /**
      * @param dataInicio the dataInicio to set
      */
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
     /**
      * @return the dataFim
      */
-    public Date getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
     /**
      * @param dataFim the dataFim to set
      */
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
+
+    /**
+     * @return the dataRecebimentoEsperado_receita
+     */
+    public LocalDate getDataRecebimentoEsperado_receita() {
+        return dataRecebimentoEsperado_receita;
+    }
+
+    /**
+     * @param dataRecebimentoEsperado_receita the dataRecebimentoEsperado_receita to set
+     */
+    public void setDataRecebimentoEsperado_receita(LocalDate dataRecebimentoEsperado_receita) {
+        this.dataRecebimentoEsperado_receita = dataRecebimentoEsperado_receita;
+    }
+
+    /**
+     * @return the dataRecebimento_receita
+     */
 }
