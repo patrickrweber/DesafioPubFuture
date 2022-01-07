@@ -1,6 +1,6 @@
 package DTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * Classe de transferências de dados através dos métodos get e set
@@ -12,7 +12,7 @@ public class DespesaDTO {
     private String tipo_despesa;
     private Float valor_despesa;
     private int conta_despesa, id_despesa;
-    private Date dataPagamento_despesa, dataPagamentoEsperado_despesa;
+    private LocalDate dataPagamento_despesa, dataPagamentoEsperado_despesa, dataInicio, dataFim;
 
     /**
      * Método get da propriedade Tipo_despesa
@@ -88,39 +88,59 @@ public class DespesaDTO {
     }
 
     /**
-     * Método get da propriedade DataPagamento_despesa
-     *
-     * @return dataPagamento_despesa
+     * @return the dataPagamento_despesa
      */
-    public Date getDataPagamento_despesa() {
+    public LocalDate getDataPagamento_despesa() {
         return dataPagamento_despesa;
     }
 
     /**
-     * Método set da propriedade DataPagamento_despesa
-     *
-     * @param dataPagamento_despesa Fornece a data de pagamento da despesa
+     * @param dataPagamento_despesa the dataPagamento_despesa to set
      */
-    public void setDataPagamento_despesa(Date dataPagamento_despesa) {
+    public void setDataPagamento_despesa(LocalDate dataPagamento_despesa) {
         this.dataPagamento_despesa = dataPagamento_despesa;
     }
 
     /**
-     * Método get da propriedade DataPagamentoEsperado_despesa
-     *
-     * @return dataPagamentoEsperado_despesa
+     * @return the dataPagamentoEsperado_despesa
      */
-    public Date getDataPagamentoEsperado_despesa() {
+    public LocalDate getDataPagamentoEsperado_despesa() {
         return dataPagamentoEsperado_despesa;
     }
 
     /**
-     * Método set da propriedade DataPagamentoEsperado_despesa
-     *
-     * @param dataPagamentoEsperado_despesa Fornece a data de pagamento esperado
-     * da despesa
+     * @param dataPagamentoEsperado_despesa the dataPagamentoEsperado_despesa to set
      */
-    public void setDataPagamentoEsperado_despesa(Date dataPagamentoEsperado_despesa) {
+    public void setDataPagamentoEsperado_despesa(LocalDate dataPagamentoEsperado_despesa) {
         this.dataPagamentoEsperado_despesa = dataPagamentoEsperado_despesa;
     }
+
+    /**
+     * @return the dataInicio
+     */
+    public LocalDate getDataInicio() {
+        return dataInicio;
+    }
+
+    /**
+     * @param dataInicio the dataInicio to set
+     */
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    /**
+     * @return the dataFim
+     */
+    public LocalDate getDataFim() {
+        return dataFim;
+    }
+
+    /**
+     * @param dataFim the dataFim to set
+     */
+    public void setDataFim(LocalDate dataFim) {
+        this.dataFim = dataFim;
+    }
+
 }
