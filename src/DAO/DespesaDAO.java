@@ -1,3 +1,26 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2022 Patrick Renan Weber
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package DAO;
 
 import DTO.DespesaDTO;
@@ -31,10 +54,10 @@ public class DespesaDAO {
         String comando = "insert into despesas (valor, dataPagamento, dataPagamentoEsperado,"
                 + " tipoDespesa, contas_idContas) values (?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conectaBD();
-        
+
         Date dataPagamento = Date.valueOf(objdespesadto.getDataPagamento_despesa());
         Date dataPagamentoEsperado = Date.valueOf(objdespesadto.getDataPagamentoEsperado_despesa());
-        
+
         try {
             pstm = conexao.prepareStatement(comando);
             pstm.setFloat(1, objdespesadto.getValor_despesa());
@@ -94,7 +117,7 @@ public class DespesaDAO {
         String comando = "update despesas set valor = ?, dataPagamento = ?, dataPagamentoEsperado = ?,"
                 + " contas_idContas = ?, tipoDespesa = ? where idDespesas = ?";
         conexao = new ConexaoDAO().conectaBD();
-        
+
         Date dataPagamento = Date.valueOf(objdespesadto.getDataPagamento_despesa());
         Date dataPagamentoEsperado = Date.valueOf(objdespesadto.getDataPagamentoEsperado_despesa());
 
@@ -132,10 +155,17 @@ public class DespesaDAO {
             JOptionPane.showMessageDialog(null, "DespesaDAO Excluir" + erro);
         }
     }
-    public ArrayList<DespesaDTO> PesquisarData(DespesaDTO objdespesadto) {
-        String comando = "select * from despesas where dataPagamento between '"+objdespesadto.getDataInicio()+"' and '" + objdespesadto.getDataFim()+"'";
-        conexao = new ConexaoDAO().conectaBD();
 
+    /**
+     * Método que gera uma lista das despesas filtradas através de um período
+     * estipulado
+     *
+     * @param objdespesadto Objeto da classe DespesaDTO
+     * @return lista
+     */
+    public ArrayList<DespesaDTO> PesquisarData(DespesaDTO objdespesadto) {
+        String comando = "select * from despesas where dataPagamento between '" + objdespesadto.getDataInicio() + "' and '" + objdespesadto.getDataFim() + "'";
+        conexao = new ConexaoDAO().conectaBD();
 
         try {
 

@@ -1,3 +1,26 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2022 Patrick Renan Weber
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package DTO;
 
 /**
@@ -8,7 +31,7 @@ package DTO;
 public class ContaDTO {
 
     private String instituicao, tipo_conta;
-    private Float saldo_conta, novoSaldo1, novoSaldo2;
+    private float saldo_conta, novoSaldo1, novoSaldo2;
     private int id_conta, conta1, conta2;
 
     /**
@@ -34,7 +57,7 @@ public class ContaDTO {
      *
      * @return saldo_conta
      */
-    public Float getSaldo_conta() {
+    public float getSaldo_conta() {
         return saldo_conta;
     }
 
@@ -43,7 +66,7 @@ public class ContaDTO {
      *
      * @param saldo_conta Fornece o saldo referente a conta
      */
-    public void setSaldo_conta(Float saldo_conta) {
+    public void setSaldo_conta(float saldo_conta) {
         this.saldo_conta = saldo_conta;
     }
 
@@ -119,7 +142,7 @@ public class ContaDTO {
      * Método get da propriedade novoSaldo1
      * @return novoSaldo1
      */
-    public Float getNovoSaldo1() {
+    public float getNovoSaldo1() {
         return novoSaldo1;
     }
 
@@ -127,7 +150,7 @@ public class ContaDTO {
      * Método set da propriedade novoSaldo1
      * @param novoSaldo1 Fornece o novo saldo da conta após a transferência
      */
-    public void setNovoSaldo1(Float novoSaldo1) {
+    public void setNovoSaldo1(float novoSaldo1) {
         this.novoSaldo1 = novoSaldo1;
     }
 
@@ -135,7 +158,7 @@ public class ContaDTO {
      * Método get da propriedade novoSaldo2
      * @return novoSaldo2
      */
-    public Float getNovoSaldo2() {
+    public float getNovoSaldo2() {
         return novoSaldo2;
     }
 
@@ -143,7 +166,7 @@ public class ContaDTO {
      * Método set da propriedade novoSaldo2
      * @param novoSaldo2 Fornece o novo saldo da conta após a transferência
      */
-    public void setNovoSaldo2(Float novoSaldo2) {
+    public void setNovoSaldo2(float novoSaldo2) {
         this.novoSaldo2 = novoSaldo2;
     }
 
