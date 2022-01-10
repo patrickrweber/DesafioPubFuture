@@ -1,3 +1,26 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2022 Patrick Renan Weber
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package DTO;
 
 import java.time.LocalDate;
@@ -10,11 +33,9 @@ import java.time.LocalDate;
 public class ReceitaDTO {
 
     private String descricao_receita, tipo_receita;
-    private Float valor_receita;
+    private float valor_receita;
     private int conta_receita, id_receita;
     private LocalDate dataRecebimento_receita, dataInicio, dataFim, dataRecebimentoEsperado_receita;
-
-
 
     /**
      * Método get da propriedade Descricao_receita
@@ -58,7 +79,7 @@ public class ReceitaDTO {
      *
      * @return valor_receita
      */
-    public Float getValor_receita() {
+    public float getValor_receita() {
         return valor_receita;
     }
 
@@ -67,7 +88,7 @@ public class ReceitaDTO {
      *
      * @param valor_receita Fornece o valor da receita
      */
-    public void setValor_receita(Float valor_receita) {
+    public void setValor_receita(float valor_receita) {
         this.valor_receita = valor_receita;
     }
 
@@ -108,62 +129,75 @@ public class ReceitaDTO {
     }
 
     /**
-     * @return the dataRecebimento_receita
+     * Método get da propriedade DataRecebimento_receita
+     *
+     * @return dataRecebimento_receita
      */
     public LocalDate getDataRecebimento_receita() {
         return dataRecebimento_receita;
     }
 
     /**
-     * @param dataRecebimento_receita the dataRecebimento_receita to set
+     * Método set da propriedade DataRecebimento_receita
+     *
+     * @param dataRecebimento_receita Fornece a data de recebimento da receita
      */
     public void setDataRecebimento_receita(LocalDate dataRecebimento_receita) {
         this.dataRecebimento_receita = dataRecebimento_receita;
     }
 
     /**
-     * @return the dataInicio
+     * Método get da propriedade DataInicio
+     *
+     * @return dataInicio
      */
     public LocalDate getDataInicio() {
         return dataInicio;
     }
 
     /**
-     * @param dataInicio the dataInicio to set
+     * Método set da propriedade DataInicio
+     *
+     * @param dataInicio fornece a data de início para o filtro por data
      */
     public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
     /**
-     * @return the dataFim
+     * Método get da propriedade DataFim
+     *
+     * @return dataFim
      */
     public LocalDate getDataFim() {
         return dataFim;
     }
 
     /**
-     * @param dataFim the dataFim to set
+     * Método set da propriedade DataFim
+     *
+     * @param dataFim Fornece a data de fim para o filtro por data
      */
     public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 
     /**
-     * @return the dataRecebimentoEsperado_receita
+     * Método get da propriedade DataRecebimentoEsperado_receita
+     *
+     * @return dataRecebimentoEsperado_receita
      */
     public LocalDate getDataRecebimentoEsperado_receita() {
         return dataRecebimentoEsperado_receita;
     }
 
     /**
-     * @param dataRecebimentoEsperado_receita the dataRecebimentoEsperado_receita to set
+     * Método set da propriedade DataRecebimentoEsperado_receita
+     *
+     * @param dataRecebimentoEsperado_receita Fornece a data de recebimento
+     * esperado da receita
      */
     public void setDataRecebimentoEsperado_receita(LocalDate dataRecebimentoEsperado_receita) {
         this.dataRecebimentoEsperado_receita = dataRecebimentoEsperado_receita;
     }
-
-    /**
-     * @return the dataRecebimento_receita
-     */
 }

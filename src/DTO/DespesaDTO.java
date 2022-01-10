@@ -1,3 +1,26 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2022 Patrick Renan Weber
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package DTO;
 
 import java.time.LocalDate;
@@ -10,7 +33,7 @@ import java.time.LocalDate;
 public class DespesaDTO {
 
     private String tipo_despesa;
-    private Float valor_despesa;
+    private float valor_despesa;
     private int conta_despesa, id_despesa;
     private LocalDate dataPagamento_despesa, dataPagamentoEsperado_despesa, dataInicio, dataFim;
 
@@ -38,7 +61,7 @@ public class DespesaDTO {
      *
      * @return valor_despesa
      */
-    public Float getValor_despesa() {
+    public float getValor_despesa() {
         return valor_despesa;
     }
 
@@ -47,7 +70,7 @@ public class DespesaDTO {
      *
      * @param valor_despesa Fornece o valor da despesa em específico
      */
-    public void setValor_despesa(Float valor_despesa) {
+    public void setValor_despesa(float valor_despesa) {
         this.valor_despesa = valor_despesa;
     }
 
@@ -88,56 +111,73 @@ public class DespesaDTO {
     }
 
     /**
-     * @return the dataPagamento_despesa
+     * Método get da propriedade DataPagamento_despesa
+     *
+     * @return dataPagamento_despesa
      */
     public LocalDate getDataPagamento_despesa() {
         return dataPagamento_despesa;
     }
 
     /**
-     * @param dataPagamento_despesa the dataPagamento_despesa to set
+     * Método set da propriedade DataPagamento_despesa
+     *
+     * @param dataPagamento_despesa Fornece a data de pagamento da despesa
      */
     public void setDataPagamento_despesa(LocalDate dataPagamento_despesa) {
         this.dataPagamento_despesa = dataPagamento_despesa;
     }
 
     /**
-     * @return the dataPagamentoEsperado_despesa
+     * Método get da propriedade DataPagamentoEsperado_despesa
+     *
+     * @return dataPagamentoEsperado_despesa
      */
     public LocalDate getDataPagamentoEsperado_despesa() {
         return dataPagamentoEsperado_despesa;
     }
 
     /**
-     * @param dataPagamentoEsperado_despesa the dataPagamentoEsperado_despesa to set
+     * Método set da propriedade DataPagamentoEsperado_despesa
+     *
+     * @param dataPagamentoEsperado_despesa Fornece a data de pagamento esperado
+     * da despesa
      */
     public void setDataPagamentoEsperado_despesa(LocalDate dataPagamentoEsperado_despesa) {
         this.dataPagamentoEsperado_despesa = dataPagamentoEsperado_despesa;
     }
 
     /**
-     * @return the dataInicio
+     * Método get da propriedade DataInicio
+     *
+     * @return dataInicio
      */
     public LocalDate getDataInicio() {
         return dataInicio;
     }
 
     /**
-     * @param dataInicio the dataInicio to set
+     * Método set da propriedade DataInicio
+     *
+     * @param dataInicio Fornece a data de Inicio do filtro por data
      */
     public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
     /**
-     * @return the dataFim
+     * Método get da propriedade DataFim
+     *
+     * @return dataFim
      */
     public LocalDate getDataFim() {
         return dataFim;
     }
 
     /**
-     * @param dataFim the dataFim to set
+     * Método set da propriedade DataFim
+     *
+     * @param dataFim Fornece a data de fim do filtro por data
      */
     public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;

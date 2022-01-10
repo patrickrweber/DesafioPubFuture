@@ -40,15 +40,15 @@ import javax.swing.JOptionPane;
 public class ConexaoDAO {
 
     /**
-     * Médo responsável pela conexão com o banco de dados
+     * Método responsável pela conexão com o banco de dados
      *
      * @return conexao
      */
-    public Connection conectaBD() {      //Método que conecta o banco de dados
+    public Connection conectaBD() {     
         Connection conexao = null;
         try {
             String url = "jdbc:mysql://localhost:3306/desafiopubfutureder?user=root&password=";
-            conexao = DriverManager.getConnection(url);     //Define a url para conexão do banco local e adicionar o driver
+            conexao = DriverManager.getConnection(url);     
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ConexaoDAO" + e.getMessage());
