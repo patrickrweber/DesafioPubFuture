@@ -5,6 +5,7 @@ Apache NetBeans;
 MySql Server 8.0;
 
 Instale os softwares necessários;
+
 Faça download dos arquivos presentes no repositório do GitHub;
 Faça a extração dos arquivos dentro da sua pasta de projetos do NetBeans;
 No MySQL Server, importe o arquivo "desafiopubfuture.sql";
