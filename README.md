@@ -29,3 +29,4 @@ mysql community server
 mysql server 8.0.27
 mysql connector 8.0.27
 senha mysql server
+usuarios e privilegios, alterar nome root para adm, criar novo user root com a senha em branco, alterar privilegios para dba
