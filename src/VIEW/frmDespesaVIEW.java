@@ -66,7 +66,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
         jLabelValorDespesa = new javax.swing.JLabel();
         jTextFieldValorDespesa = new javax.swing.JTextField();
         jLabelDataPagamentoDespesa = new javax.swing.JLabel();
-        jTextFieldDataPagementoDespesa = new javax.swing.JTextField();
+        jTextFieldDataPagamentoDespesa = new javax.swing.JTextField();
         jLabelDataPagementoEsperadoDespesa = new javax.swing.JLabel();
         jTextFieldDataPagamentoEsperadoDespesa = new javax.swing.JTextField();
         jButtonLimparCamposDespesa = new javax.swing.JButton();
@@ -136,7 +136,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
 
         jLabelDataPagamentoDespesa.setText("Data Pagamento");
 
-        jTextFieldDataPagementoDespesa.setToolTipText("");
+        jTextFieldDataPagamentoDespesa.setToolTipText("");
 
         jLabelDataPagementoEsperadoDespesa.setText("Data Pagamento Esperado");
 
@@ -209,13 +209,13 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldIdDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelIdDespesa)
-                            .addComponent(jTextFieldDataPagementoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDataPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelDataPagementoEsperadoDespesa)
                             .addComponent(jTextFieldDataPagamentoEsperadoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldContaDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelDataPagamentoDespesa)
                             .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jList1tipoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,11 +230,12 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextFieldFiltroDataInicio)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jLabel3)
-                                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                                .addGap(18, 18, 18)
+                                                        .addGap(18, 18, Short.MAX_VALUE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jTextFieldFiltroDataInicio)
+                                                        .addGap(18, 18, 18)))
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabelConsultaFiltro)
                                                     .addComponent(jTextFieldFiltroTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -244,10 +245,10 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
                                                 .addComponent(jTextFieldDespesaTotal)))
                                         .addGap(26, 26, 26))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldFiltroDataFim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jTextFieldFiltroDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, Short.MAX_VALUE)
                                         .addComponent(jButtonFiltroData)
                                         .addGap(50, 50, 50))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -262,7 +263,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
                         .addComponent(jButtonExcluirDespesa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonVoltarDespesa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonMostrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonLimparCamposDespesa)
@@ -274,9 +275,38 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelIdDespesa)
+                    .addComponent(jLabelValorDespesa)
+                    .addComponent(jLabel2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jTextFieldValorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTipoDespesa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jList1tipoDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldIdDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldContaDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelDataPagamentoDespesa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldDataPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelDataPagementoEsperadoDespesa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldDataPagamentoEsperadoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 25, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
@@ -289,45 +319,16 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldFiltroDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonFiltroData))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jTextFieldValorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelTipoDespesa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jList1tipoDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelIdDespesa)
-                            .addComponent(jLabelValorDespesa)
-                            .addComponent(jLabel2))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldIdDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldContaDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelDataPagamentoDespesa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                .addComponent(jTextFieldDataPagementoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelDataPagementoEsperadoDespesa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldDataPagamentoEsperadoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
+                                .addGap(8, 8, 8)
+                                .addComponent(jTextFieldFiltroDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jTextFieldDespesaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelDespesaTotal))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
+                                    .addComponent(jLabelDespesaTotal)))
+                            .addComponent(jButtonFiltroData))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonLimparCamposDespesa)
@@ -460,8 +461,8 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableDespesas;
     private javax.swing.JTextField jTextFieldContaDespesa;
+    private javax.swing.JTextField jTextFieldDataPagamentoDespesa;
     private javax.swing.JTextField jTextFieldDataPagamentoEsperadoDespesa;
-    private javax.swing.JTextField jTextFieldDataPagementoDespesa;
     private javax.swing.JTextField jTextFieldDespesaTotal;
     private javax.swing.JTextField jTextFieldFiltroDataFim;
     private javax.swing.JTextField jTextFieldFiltroDataInicio;
@@ -509,7 +510,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
         int setar = jTableDespesas.getSelectedRow();
         jTextFieldIdDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 0).toString());
         jTextFieldValorDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 1).toString());
-        jTextFieldDataPagementoDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 2).toString());
+        jTextFieldDataPagamentoDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 2).toString());
         jTextFieldDataPagamentoEsperadoDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 3).toString());
         jTextFieldContaDespesa.setText(jTableDespesas.getModel().getValueAt(setar, 4).toString());
         jList1tipoDespesa.setSelectedValue(jTableDespesas.getModel().getValueAt(setar, 5).toString(), rootPaneCheckingEnabled);
@@ -523,7 +524,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
         Float valorDespesa;
         int contaDespesa;
 
-        String[] dataPagSep = jTextFieldDataPagementoDespesa.getText().split("/");
+        String[] dataPagSep = jTextFieldDataPagamentoDespesa.getText().split("/");
         String[] dataPagEspSep = jTextFieldDataPagamentoEsperadoDespesa.getText().split("/");
         LocalDate dataPagamento = LocalDate.of(Integer.parseInt(dataPagSep[2]), Integer.parseInt(dataPagSep[1]), Integer.parseInt(dataPagSep[0]));
         LocalDate dataPagamentoEsperado = LocalDate.of(Integer.parseInt(dataPagEspSep[2]), Integer.parseInt(dataPagEspSep[1]), Integer.parseInt(dataPagEspSep[0]));
@@ -550,7 +551,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
     private void limparCamposDespesa() {
         jTextFieldIdDespesa.setText("");
         jTextFieldValorDespesa.setText("");
-        jTextFieldDataPagementoDespesa.setText("");
+        jTextFieldDataPagamentoDespesa.setText("");
         jTextFieldDataPagamentoEsperadoDespesa.setText("");
         jTextFieldContaDespesa.setText("");
         jList1tipoDespesa.clearSelection();
@@ -567,7 +568,7 @@ public class frmDespesaVIEW extends javax.swing.JFrame {
         Float valorDespesa;
         int contaDespesa, idDespesa;
 
-        String[] dataPagSep = jTextFieldDataPagementoDespesa.getText().split("/");
+        String[] dataPagSep = jTextFieldDataPagamentoDespesa.getText().split("/");
         String[] dataPagEspSep = jTextFieldDataPagamentoEsperadoDespesa.getText().split("/");
         LocalDate dataPagamento = LocalDate.of(Integer.parseInt(dataPagSep[2]), Integer.parseInt(dataPagSep[1]), Integer.parseInt(dataPagSep[0]));
         LocalDate dataPagamentoEsperado = LocalDate.of(Integer.parseInt(dataPagEspSep[2]), Integer.parseInt(dataPagEspSep[1]), Integer.parseInt(dataPagEspSep[0]));
