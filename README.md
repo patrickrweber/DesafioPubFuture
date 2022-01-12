@@ -1,7 +1,10 @@
 # DesafioPubFuture
 Softwares necessários para aplicação do programa:
+
 JDK 17;
+
 Apache NetBeans;
+
 MySql Server 8.0;
 
 Instale os softwares necessários;
