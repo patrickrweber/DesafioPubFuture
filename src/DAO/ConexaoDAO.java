@@ -47,7 +47,7 @@ public class ConexaoDAO {
     public Connection conectaBD() {     
         Connection conexao = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/desafiopubfutureder?user=root&password=";
+            String url = "jdbc:mysql://localhost:3306/desafiopubfutureder?user=publica&password=";
             conexao = DriverManager.getConnection(url);     
 
         } catch (SQLException e) {
