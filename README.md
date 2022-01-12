@@ -21,3 +21,11 @@ No NetBeans, vá em File - Open Project, e selecione a pasta "DesafioPubFuture-m
 
 Execute a classe menuInicialVIEW, e navegue através das janelas para experenciar as diversas ferramentas do sistema.
 
+hamcrest 1.2 jar
+mysql connector java 8.0.27
+hamcrest 1.3
+jcalendar 1.4
+mysql community server
+mysql server 8.0.27
+mysql connector 8.0.27
+senha mysql server
